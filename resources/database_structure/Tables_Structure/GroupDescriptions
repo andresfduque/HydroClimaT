@@ -1,0 +1,17 @@
+Table: GroupDescriptions
+
+The GroupDescriptions table lists the descriptions for each of the groups of data values that have
+been formed.
+
+CREATE TABLE GroupDescriptions (
+	GroupID serial unique,
+	GroupDescription text,
+	PRIMARY KEY (GroupID)
+	);
+
+The following rules and best practices should be used in populating this table:
+	1. This table will only be populated if groups of data values have been created in the ODM
+	database.
+	2. The GroupID field is the primary key, must be a unique integer, and cannot be NULL. It
+	should be implemented as an auto number/identity field.
+	3. The GroupDescription can be any text string that describes the group of observations.

@@ -1,0 +1,21 @@
+Table: VerticalDatumCV
+
+The ValueTypeCV table contains the controlled vocabulary for the ValueType field in the
+Variables and SeriesCatalog tables.
+
+CREATE TABLE VerticalDatumCV (
+		Term varchar(255),
+		Definition text,
+		PRIMARY KEY (Term)
+		);
+
+This table is pre-populated within the ODM. Changes to this controlled vocabulary can be
+requested at http://his.cuahsi.org/mastercvreg.html.
+
+INSERT INTO VerticalDatumCV (Term,Definition)
+	VALUES ('GEOCOL2004','MAGNA-SIRGAS Vertical Datum of 2004'),
+	('EGM96','Earth Gravitational Model 1996'),
+	('MSL','Mean Sea Level'),
+	('NAVD88','North American Vertical Datum of 1988'),
+	('NGVD29','National Geodetic Vertical Datum of 1929'),
+	('Unknown','The vertical datum is unknown');

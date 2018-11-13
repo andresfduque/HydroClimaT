@@ -1,0 +1,21 @@
+Table: QualityControlLevels
+
+The QualityControlLevels table contains the quality control levels that are used for versioning
+data within the database.
+
+CREATE TABLE QualityControlLevels (
+	QualityControlLevelID serial unique,
+	QualityControlLevelCode varchar(50) not null,
+	Definition varchar(255) not null,
+	Explanation text not null,
+	PRIMARY KEY (QualityControlLevelID)
+	);
+
+This table is pre-populated with quality control levels 0 through 4 within the ODM. The
+following rules and best practices should be used when populating this table:
+	1. The QualityControlLevelID field is the primary key, must be a unique integer, and cannot
+	be NULL. This field should be implemented as an auto number/identity field.
+	2. It is suggested that the pre-populated system of quality control level codes (i.e.,
+	QualityControlLevelCodes 0 – 4) be used. If the pre-populated list is not sufficient, new
+	quality control levels can be defined. A quality control level code of -9999 is suggested
+	for data whose quality control level is unknown.

@@ -1,0 +1,393 @@
+UnitsID,UnitsName,UnitsType,UnitsAbbreviation,
+1,percent,Dimensionless,%,
+2,degree,Angle,deg,1
+3,grad,Angle,grad,1
+4,radian,Angle,rad,1
+5,degree north,Angle,degN,1
+6,degree south,Angle,degS,1
+7,degree west,Angle,degW,1
+8,degree east,Angle,degE,1
+9,arcminute,Angle,arcmin,1
+10,arcsecond,Angle,arcsec,1
+11,steradian,Angle,sr,1
+12,acre,Area,ac,1
+13,hectare,Area,ha,1
+14,square centimeter,Area,cm^2,1
+15,square foot,Area,ft^2,1
+16,square kilometer,Area,km^2,1
+17,square meter,Area,m^2,1
+18,square mile,Area,mi^2,1
+19,hertz,Frequency,Hz,1
+20,darcy,Permeability,D,1
+21,british thermal unit,Energy,BTU,1
+22,calorie,Energy,cal,1
+23,erg,Energy,erg,1
+24,foot pound force,Energy,lbf ft,1
+25,joule,Energy,J,1
+26,kilowatt hour,Energy,kW hr,1
+27,electronvolt,Energy,eV,1
+28,langleys per day,Energy Flux,Ly/d,1
+29,langleys per minute,Energy Flux,Ly/min,1
+30,langleys per second,Energy Flux,Ly/s,1
+31,megajoules per square meter per day,Energy Flux,MJ/m^2 d,1
+32,watts per square centimeter,Energy Flux,W/cm^2,1
+33,watts per square meter,Energy Flux,W/m^2,1
+34,acre feet per year,Flow,ac ft/yr,1
+35,cubic feet per second,Flow,cfs,1
+36,cubic meters per second,Flow,m^3/s,1
+37,cubic meters per day,Flow,m^3/d,1
+38,gallons per minute,Flow,gpm,1
+39,liters per second,Flow,L/s,1
+40,million gallons per day,Flow,MGD,1
+41,dyne,Force,dyn,1
+42,kilogram force,Force,kgf,1
+43,newton,Force,N,1
+44,pound force,Force,lbf,1
+45,kilo pound force,Force,kip,1
+46,ounce force,Force,ozf,1
+47,centimeter ,Length,cm,1
+48,international foot,Length,ft,1
+49,international inch,Length,in,1
+50,international yard,Length,yd,1
+51,kilometer,Length,km,1
+52,meter,Length,m,1
+53,international mile,Length,mi,1
+54,millimeter,Length,mm,1
+55,micron,Length,um,1
+56,angstrom,Length,Å,1
+57,femtometer,Length,fm,1
+58,nautical mile,Length,nmi,1
+59,lumen,Light,lm,1
+60,lux,Light,lx,1
+61,lambert,Light,La,1
+62,stilb,Light,sb,1
+63,phot,Light,ph,1
+64,langley,Light,Ly,1
+65,gram,Mass,g,1
+66,kilogram,Mass,kg,1
+67,milligram,Mass,mg,1
+68,microgram,Mass,ug,1
+69,pound mass (avoirdupois),Mass,lb,1
+70,slug,Mass,slug,1
+71,metric ton,Mass,tonne,1
+72,grain,Mass,grain,1
+73,carat,Mass,car,1
+74,atomic mass unit,Mass,amu,1
+75,short ton,Mass,ton,1
+76,BTU per hour,Power,BTU/hr,1
+77,foot pound force per second,Power,lbf/s,1
+78,horse power (shaft),Power,hp,1
+79,kilowatt,Power,kW,1
+80,watt,Power,W,1
+81,voltampere,Power,VA,1
+82,atmospheres,Pressure/Stress,atm,1
+83,pascal,Pressure/Stress,Pa,1
+84,inch of mercury,Pressure/Stress,inch Hg,1
+85,inch of water,Pressure/Stress,inch H2O,1
+86,millimeter of mercury,Pressure/Stress,mm Hg,1
+87,millimeter of water,Pressure/Stress,mm H2O,1
+88,centimeter of mercury,Pressure/Stress,cm Hg,1
+89,centimeter of water,Pressure/Stress,cm H2O,1
+90,millibar,Pressure/Stress,mbar,1
+91,pound force per square inch,Pressure/Stress,psi,1
+92,torr,Pressure/Stress,torr,1
+93,barie,Pressure/Stress,barie,1
+94,meters per pixel,Resolution,meters per pixel,1
+95,meters per meter,Scale,-,1
+96,degree celsius,Temperature,degC,1
+97,degree fahrenheit,Temperature,degF,1
+98,degree rankine,Temperature,degR,1
+99,degree kelvin,Temperature,degK,1
+100,second,Time,s,1
+101,millisecond,Time,millisec,1
+102,minute,Time,min,1
+103,hour,Time,hr,1
+104,day,Time,d,1
+105,week,Time,week,1
+106,month,Time,month,1
+107,common year (365 days),Time,yr,1
+108,leap year (366 days),Time,leap yr,1
+109,Julian year (365.25 days),Time,jul yr,1
+110,Gregorian year (365.2425 days),Time,greg yr,1
+111,centimeters per hour,Velocity,cm/hr,1
+112,centimeters per second,Velocity,cm/s,1
+113,feet per second,Velocity,ft/s,1
+114,gallons per day per square foot,Velocity,gpd/ft^2,1
+115,inches per hour,Velocity,in/hr,1
+116,kilometers per hour,Velocity,km/h,1
+117,meters per day,Velocity,m/d,1
+118,meters per hour,Velocity,m/hr,1
+119,meters per second,Velocity,m/s,1
+120,miles per hour,Velocity,mph,1
+121,millimeters per hour,Velocity,mm/hr,1
+122,nautical mile per hour,Velocity,knot,1
+123,acre foot,Volume,ac ft,1
+124,cubic centimeter,Volume,cc,1
+125,cubic foot,Volume,ft^3,1
+126,cubic meter,Volume,m^3,1
+127,hectare meter,Volume,hec m,1
+128,liter,Volume,L,1
+129,US gallon,Volume,gal,1
+130,barrel,Volume,bbl,1
+131,pint,Volume,pt,1
+132,bushel,Volume,bu,1
+133,teaspoon,Volume,tsp,1
+134,tablespoon,Volume,tbsp,1
+135,quart,Volume,qrt,1
+136,ounce,Volume,oz,1
+137,dimensionless,Dimensionless,-,1
+138,mega joule,Energy,MJ,1
+139,degrees minutes seconds,Angle,dddmmss,1
+140,calories per square centimeter per day,Energy Flux,cal/cm^2 d,1
+141,calories per square centimeter per minute,Energy Flux,cal/cm^2 min,1
+142,milliliters per square centimeter per day,Hyporheic flux,ml/cm^2 d,1
+143,micromoles per square meter per second,Areal Flux,umol/m^2 s,1
+144,megajoules per square meter,Energy per Area,MJ/m^2,1
+145,gallons per day,Flow,gpd,1
+146,million gallons per month,Flow,MGM,1
+147,million gallons per year,Flow,MGY,1
+148,short tons per day per foot,Mass flow per unit width,ton/d ft,1
+149,lumens per square foot,Light Intensity,lm/ft^2,1
+150,microeinsteins per square meter per second,Light Intensity,uE/m^2 s,1
+151,alphas per meter,Light,a/m,1
+152,microeinsteins per square meter,Light,uE/m^2,1
+153,millimoles of photons per square meter,Light,mmol/m^2,1
+154,absorbance per centimeter,Extinction/Absorbance,A/cm,1
+155,nanogram,Mass,ng,1
+156,picogram,Mass,pg,1
+157,milliequivalents,Mass,meq,1
+158,grams per square meter,Areal Density,g/m^2,1
+159,milligrams per square meter,Areal Density,mg/m^2,1
+160,micrograms per square meter,Areal Density,ug/m^2,1
+161,grams per square meter per day,Areal Loading,g/m^2 d,1
+162,grams per day,Loading,g/d,1
+163,pounds per day,Loading,lb/d,1
+164,pounds per mile,Loading,lb/mi,1
+165,short tons per day,Loading,ton/d,1
+166,milligrams per cubic meter per day,Productivity,mg/m^3 d,1
+167,milligrams per square meter per day,Productivity,mg/m^2 d,1
+168,volts,Potential Difference,V,1
+169,millivolts,Potential Difference,mV,1
+170,kilopascal,Pressure/Stress,kPa,1
+171,megapascal,Pressure/Stress,MPa,1
+172,becquerel,Radioactivity,Bq,1
+173,becquerels per gram,Radioactivity,Bq/g,1
+174,curie,Radioactivity,Ci,1
+175,picocurie,Radioactivity,pCi,1
+176,ohm,Resistance,ohm,1
+177,ohm meter,Resistivity,ohm m,1
+178,picocuries per gram,Specific Activity,pCi/g,1
+179,picocuries per liter,Specific Activity,pCi/L,1
+180,picocuries per milliliter,Specific Activity,pCi/ml,1
+181,hour minute,Time,hhmm,1
+182,year month day,Time,yymmdd,1
+183,year day (Julian),Time,yyddd,1
+184,inches per day,Velocity,in/d,1
+185,inches per week,Velocity,in/week,1
+186,inches per storm,Precipitation,in/storm,1
+187,thousand acre feet,Volume,10^3 ac ft,1
+188,milliliter,Volume,ml,1
+189,cubic feet per second days,Volume,cfs d,1
+190,thousand gallons,Volume,10^3 gal,1
+191,million gallons,Volume,10^6 gal,1
+192,microsiemens per centimeter,Electrical Conductivity,uS/cm,1
+193,practical salinity units ,Salinity,psu,1
+194,decibel,Sound,dB,1
+195,cubic centimeters per gram,Specific Volume,cm^3/g,1
+196,square meters per gram,Specific Surface Area ,m^2/g,1
+197,short tons per acre foot,Concentration,ton/ac ft,1
+198,grams per cubic centimeter,Concentration,g/cm^3,1
+199,milligrams per liter,Concentration,mg/L,1
+200,nanograms per cubic meter,Concentration,ng/m^3,1
+201,nanograms per liter,Concentration,ng/L,1
+202,grams per liter,Concentration,g/L,1
+203,micrograms per cubic meter,Concentration,ug/m^3,1
+204,micrograms per liter,Concentration,ug/L,1
+205,parts per million,Concentration,ppm,1
+206,parts per billion,Concentration,ppb,1
+207,parts per trillion,Concentration,ppt,1
+208,parts per quintillion,Concentration,ppqt,1
+209,parts per quadrillion,Concentration,ppq,1
+210,per mille,Concentration,‰,1
+211,microequivalents per liter,Concentration,ueq/L,1
+212,milliequivalents per liter,Concentration,meq/L,1
+213,milliequivalents per 100 gram,Concentration,meq/100 g,1
+214,milliosmols per kilogram,Concentration,mOsm/kg,1
+215,nanomoles per liter,Concentration,nmol/L,1
+216,picograms per cubic meter,Concentration,pg/m^3,1
+217,picograms per liter,Concentration,pg/L,1
+218,picograms per milliliter,Concentration,pg/ml,1
+219,tritium units,Concentration,TU,1
+220,jackson turbidity units,Turbidity,JTU,1
+221,nephelometric turbidity units,Turbidity,NTU,1
+222,nephelometric turbidity multibeam unit,Turbidity,NTMU,1
+223,nephelometric turbidity ratio unit,Turbidity,NTRU,1
+224,formazin nephelometric multibeam unit,Turbidity,FNMU,1
+225,formazin nephelometric ratio unit,Turbidity,FNRU,1
+226,formazin nephelometric unit,Turbidity,FNU,1
+227,formazin attenuation unit,Turbidity,FAU,1
+228,formazin backscatter unit ,Turbidity,FBU,1
+229,backscatter units,Turbidity,BU,1
+230,attenuation units,Turbidity,AU,1
+231,platinum cobalt units,Color,PCU,1
+232,the ratio between UV absorbance at 254 nm and DOC level,Specific UV Absorbance,L/(mg DOC/cm),1
+233,billion colonies per day,Organism Loading,10^9 colonies/d,1
+234,number of organisms per square meter,Organism Concentration,#/m^2,1
+235,number of organisms per liter,Organism Concentration,#/L,1
+236,number or organisms per cubic meter,Organism Concentration,#/m^3,1
+237,cells per milliliter,Organism Concentration,cells/ml,1
+238,cells per square millimeter,Organism Concentration,cells/mm^2,1
+239,colonies per 100 milliliters,Organism Concentration,colonies/100 ml,1
+240,colonies per milliliter,Organism Concentration,colonies/ml,1
+241,colonies per gram,Organism Concentration,colonies/g,1
+242,colony forming units per milliliter,Organism Concentration,CFU/ml,1
+243,cysts per 10 liters,Organism Concentration,cysts/10 L,1
+244,cysts per 100 liters,Organism Concentration,cysts/100 L,1
+245,oocysts per 10 liters,Organism Concentration,oocysts/10 L,1
+246,oocysts per 100 liters,Organism Concentration,oocysts/100 L,1
+247,most probable number,Organism Concentration,MPN,1
+248,most probable number per 100 liters,Organism Concentration,MPN/100 L,1
+249,most probable number per 100 milliliters,Organism Concentration,MPN/100 ml,1
+250,most probable number per gram,Organism Concentration,MPN/g,1
+251,plaque-forming units per 100 liters,Organism Concentration,PFU/100 L,1
+252,plaques per 100 milliliters,Organism Concentration,plaques/100 ml,1
+253,counts per second,Rate,#/s,1
+254,per day,Rate,12/01/16,1
+255,nanograms per square meter per hour,Volatilization Rate,ng/m^2 hr,1
+256,nanograms per square meter per week,Volatilization Rate,ng/m^2 week,1
+257,count,Dimensionless,#,1
+258,categorical,Dimensionless,code,1
+259,absorbance per centimeter per mg/L of given acid ,Absorbance,100/cm mg/L,1
+260,per liter,Concentration Ratio,1/L,1
+261,per mille per hour,Sedimentation Rate,‰/hr,1
+262,gallons per batch,Flow,gpb,1
+263,cubic feet per barrel,Concentration,ft^3/bbl,1
+264,per mille by volume,Concentration,‰ by vol,1
+265,per mille per hour by volume,Sedimentation Rate,‰/hr by vol,1
+266,micromoles,Amount,umol,1
+267,tons of calcium carbonate per kiloton,Net Neutralization Potential,tCaCO3/Kt,1
+268,siemens per meter,Electrical Conductivity,S/m,1
+269,millisiemens per centimeter,Electrical Conductivity,mS/cm,1
+270,siemens per centimeter,Electrical Conductivity,S/cm,1
+271,practical salinity scale,Salinity,pss,1
+272,per meter,Light Extinction,1/m,1
+273,normal,Normality,N,1
+274,nanomoles per kilogram,Concentration,nmol/kg,1
+275,millimoles per kilogram,Concentration,mmol/kg,1
+276,millimoles per square meter per hour,Areal Flux,mmol/m^2 hr,1
+277,milligrams per cubic meter per hour,Productivity,mg/m^3 hr,1
+278,milligrams per day,Loading,mg/d,1
+279,liters per minute,Flow,L/min,1
+280,liters per day,Flow,L/d,1
+281,jackson candle units ,Turbidity,JCU,1
+282,grains per gallon,Concentration,gpg,1
+283,gallons per second,Flow,gps,1
+284,gallons per hour,Flow,gph,1
+285,foot candle,Illuminance,ftc,1
+286,fibers per liter,Concentration,fibers/L,1
+287,drips per minute,Flow,drips/min,1
+288,cubic centimeters per second,Flow,cm^3/sec,1
+289,colony forming units,Organism Concentration,CFU,1
+290,colony forming units per 100 milliliter,Organism Concentration,CFU/100 ml,1
+291,cubic feet per minute,Flow,cfm,1
+292,ADMI color unit,Color,ADMI,1
+293,percent by volume,Concentration,% by vol,1
+294,number of organisms per 500 milliliter,Organism Concentration,#/500 ml,1
+295,number of organisms per 100 gallon,Organism Concentration,#/100 gal,1
+296,grams per cubic meter per hour,Productivity,g/m^3 hr,1
+297,grams per minute,Loading,g/min,1
+298,grams per second,Loading,g/s,1
+299,million cubic feet,Volume,10^6 ft^3,1
+300,month year,Time,mmyy,1
+301,bar,Pressure,bar,1
+302,decisiemens per centimeter,Electrical Conductivity,dS/cm,1
+303,micromoles per liter,Concentration,umol/L,1
+304,Joules per square centimeter,Energy per Area,J/cm^2,1
+305,millimeters per day,velocity,mm/day,1
+306,parts per thousand,Concentration,ppth,1
+307,megaliter,Volume,ML,1
+308,Percent Saturation,Concentration,% Sat,1
+309,pH Unit,Dimensionless,pH,1
+310,millimeters per second,Velocity,mm/s,1
+311,liters per hour,Flow,L/hr,1
+312,cubic hecto meter,Volume,(hm)^3,1
+313,mols per cubic meter,Concentration or organism concentration,mol/m^3,1
+314,kilograms per month,Loading,kg/month,1
+315,hectopascal,Pressure/Stress,hPa,1
+316,kilograms per cubic meter,Concentration,kg/m^3,1
+317,short tons per month,Loading,ton/month,1
+318,grams per square meter per hour,Areal Flux,g/m^2 hr,1
+319,milligrams per cubic meter,Concentration,mg/m^3,1
+320,meters squared per second squared,Velocity,m^2/s^2,1
+321,squared degree Celsius,Temperature,(DegC)^2,1
+322,milligrams per cubic meter squared,Concentration,(mg/m^3)^2,1
+323,meters per second degree Celsius,Temperature,m/s DegC,1
+324,millimoles per square meter per second,Areal Flux,mmol/m^2 s,1
+325,degree Celsius millimoles per cubic meter,Concentration,DegC mmol/m^3,1
+326,millimoles per cubic meter,Concentration,mmol/m^3,1
+327,millimoles per cubic meter squared,Concentration,(mmol/m^3)^2,1
+328,Langleys per hour,Energy Flux,Ly/hr,1
+329,hits per square centimeter,Precipitation,hits/cm^2,1
+330,hits per square centimeter per hour,Velocity,hits/cm^2 hr,1
+331,relative fluorescence units,Fluorescence,RFU,1
+332,kilograms per hectare per day,Areal Flux,kg/ha d,1
+333,kilowatts per square meter,Energy Flux,kW/m^2,1
+334,kilograms per square meter,Areal Density,kg/m^2,1
+335,microeinsteins per square meter per day,Light Intensity,uE/m^2 d,1
+336,microgram per milliliter,Concentration,ug/mL,1
+337,Newton per square meter,Pressure/Stress,Newton/m^2,1
+338,micromoles per liter per hour,Pressure/Stress,umol/L hr,1
+339,decisiemens per meter,Electrical Conductivity,dS/m,1
+340,milligrams per kilogram,Mass Fraction,mg/Kg,1
+341,number of organisms per 100 milliliter,Organism Concentration,#/100 mL,1
+342,micrograms per kilogram,Mass Fraction,ug/Kg,1
+343,grams per kilogram,Mass Fraction,g/Kg,1
+344,acre feet per month,Flow,ac ft/mo,1
+345,acre feet per half month,Flow,ac ft/0.5 mo,1
+346,cubic meters per minute,Flow,m^3/min,1
+347,count per half cubic foot,Concentration,#/((ft^3)/2),1
+348,micrograms per gram,Mass Fraction,ug/g,1
+349,nanograms per gram,Mass Fraction,ng/g,1
+350,milliliters per gram,Specific Volume,ml/g,1
+351,grams per 0.1 square meter,Areal Density,g/0.1 m^2,1
+352,number of organisms per 0.1 square meter,Organism Concentration,#/0.1 m^2,1
+353,number of organisms per 1000 square meter,Organism Concentration,#/1000 m^2,1
+354,kilograms per 1000 square meter,Areal Density,kg/1000 m^2,1
+355,microgram meter per liter,Length Integrated Concentration,ug m/L,1
+356,milligrams per milliliter,Concentration,mg/mL,1
+357,superoxide dismutase units per minute per milligram,Normalized Flux,U/min mg,1
+358,picomoles per minute per milligram,Normalized Flux,pmol/min mg,1
+359,nanomoles per minute per milligram,Normalized Flux,nmol/min mg,1
+360,PCR cycle,Dimensionless,-,1
+361,nanograms per milliliter,Concentration,ng/mL,1
+362,gallons per month,Flow,gpm,1
+363,gallons per year,Flow,gpy,1
+364,Kilogram per cubic meter,Density,kg/m^3,1
+365,grams per milliliter,Density,g/mL,1
+366,meter of water,Pressure/Stress,m H2O,1
+367,millimolar,Concentration,mM,1
+368,mole percent,Concentration,mol %,1
+369,milliequivalents per kilogram,Concentration,meq/kg,1
+370,kilogram per square meter per second,Areal Flux,kg/m^2/s,1
+371,joules per square meter,Energy Per Area,J/m^2,1
+372,Amperes,Energy,A,1
+373,centimoles per kilogram,Concentration,cmol/kg,1
+374,kilograms per hectare,Areal Density,kg/ha,1
+375,cubic meter per cubic meter,Concentration,m3/m3,1
+376,micromoles per mole,Concentration,umol/mol,1
+377,millimoles per mole,Concentration,mmol/mol,1
+378,milligrams per square meter per second,Areal Flux,mg/m2 s,1
+379,decibar,Pressure,dbar,1
+380,milliliters per liter,Concentration,mL/L,1
+381,millimoles per square meter per day,Areal Flux,mmol/m^2 d,1
+382,micromoles per kilogram,Concentration,umol/kg,1
+383,Luminous Flux,Energy,LUX,1
+384,mole per mole,Concentration,mol/mol,1
+385,cubic meters per cubic meters,Concentration,m^3/m^3,1
+386,acre feet,Volume,ac ft,1
+387,Percent Lower Explosive Limit,Flammability Lower Explosive Limit,Percent LEL,1
+388,Milliamperes,Energy,mA,1
+389,kiloJoule,Energy,kJ,1
+390,millibecquerels per gram,Radioactivity,mBq/g,1
+391,millibecquerels per square centimeter,Radioactivity,mBq/cm^2,1
+392,Boolean,Dimensionless,-,1

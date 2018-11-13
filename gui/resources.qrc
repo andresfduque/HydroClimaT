@@ -1,0 +1,11 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+<file alias="new_project">icons/new_project.png</file>
+<file alias="open_project">icons/open_project.png</file>
+<file alias="save_project">icons/save_project.png</file>
+<file alias="save_project_as">icons/save_project_as.png</file>
+<file alias="postgres_db">icons/postgres_db.png</file>
+<file alias="sqlite_db">icons/sqlite_db.png</file>
+
+</qresource>
+</RCC>

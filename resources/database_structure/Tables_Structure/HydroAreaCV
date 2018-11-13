@@ -1,0 +1,21 @@
+Table: HydroAreaCV
+
+The HydroAreaCV table contains sites location on Colombia's main climate zones.
+
+CREATE TABLE HydroAreaCV (
+	HydroAreaID serial unique,
+	HydroAreaCode integer not null unique,
+	HydroAreaName varchar(255) not null,
+	HydroAreaDescription text,
+	PRIMARY KEY (HydroAreaCode)
+	);
+
+This table is pre-populated within the EODM_COL.
+
+INSERT INTO HydroAreaCV (HydroAreaCode,HydroAreaName, HydroAreaDescription)
+	VALUES (1,'Caribe', 'Region Caribe'),
+	(2,'Magdalena-Cauca', 'Región Magdalena-Cauca (Andina)'),
+	(3,'Orinoco', 'Región Orinoco'),
+	(4,'Amazonas', 'Region Amazonas'),
+	(5,'Pacifico', 'Región Pacífico');
+

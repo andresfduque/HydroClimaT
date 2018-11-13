@@ -1,0 +1,21 @@
+Table: Categories
+
+The Categories table defines the categories for categorical variables. Records are required for
+variables where DataType is specified as "Categorical." Multiple entries for each VariableID,
+with different DataValues provide the mapping from DataValue to category description.
+
+CREATE TABLE Categories (
+	VariableID integer references Variables(VariableID),
+	DataValue real not null,
+	CategoryDescription text not null,
+	);
+
+The following rules and best practices should be used in populating this table:
+	1. Although all of the fields in this table are mandatory, they need only be populated if
+	categorical data are entered into the database. If there are no categorical data in the
+	DataValues table, this table will be empty.
+	2. This table should be populated before categorical data values are added to the DataValues
+	table.
+
+CensorCode
+

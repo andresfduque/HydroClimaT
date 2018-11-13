@@ -1,0 +1,16 @@
+Table: Qualifiers
+
+The Qualifiers table contains data qualifying comments that accompany the data.
+
+	CREATE TABLE Qualifiers (
+		QualifierID serial unique,
+		QualifierCode varchar(50) default NULL,
+		QualifierDescription text not null,
+		PRIMARY KEY (QualifierID)
+		);
+
+This table will only be populated if data values that have data qualifying comments have been
+added to the ODM database. The following rules and best practices should be used when
+populating this table:
+	1. The QualifierID field is the primary key, must be a unique integer, and cannot be NULL.
+	This field should be implemented as an auto number/identity field.

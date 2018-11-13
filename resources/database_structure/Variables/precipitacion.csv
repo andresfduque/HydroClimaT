@@ -1,0 +1,13 @@
+Index,Item,Value,Description
+1,variablecode,1,Assigned value (Precipitacion=1)
+2,variablename,Precipitation,VariablenameCV
+3,speciation,Not Applicable,SpeciationCV
+4,variableunitsid,54,Units (mm)
+5,samplemedium,Precipitation,SamplemediumCV
+6,valuetype,Field Observation,ValuetypeCV
+7,isregular,1,Boolean
+8,timesupport,1,Time frequency
+9,timeunitsid,104,1 Day
+10,datatype,Cumulative,DatatypeCV
+11,generalcategory,Climate,GeneralcategoryCV
+12,nodatavalue,-9999,Assigned value

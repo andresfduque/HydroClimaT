@@ -1,0 +1,55 @@
+Table: HydroZoneCV
+
+The HydroZoneCV table contains sites location on IDEAMs Hydrologic zonification.
+
+CREATE TABLE HydroZoneCV (
+	HydroZoneID serial unique,
+	HydroZoneCode integer not null unique,
+	HydroZoneName varchar(255) not null,
+	HydroAreaCode integer not null references HydroAreaCV(HydroAreaCode),
+	HydroZoneDescription text,
+	PRIMARY KEY (HydroZoneCode)
+	);
+
+This table is pre-populated within the EODM_COL.
+
+INSERT INTO HydroZoneCV (HydroAreaCode,HydroZoneCode, HydroZoneName)
+	VALUES (1,11,'Atrato - Darién'),
+	(1,12,'Caribe - Litoral'),
+	(1,13,'Sinú'),
+	(1,15,'Caribe - Guajira'),
+	(1,16,'Catatumbo'),
+	(1,17,'Islas Caribe'),
+	(2,21,'Alto Magdalena'),
+	(2,22,'Saldaña'),
+	(2,23,'Medio Magdalena'),
+	(2,24,'Sogamoso'),
+	(2,25,'Bajo Magdalena- Cauca -San Jorge'),
+	(2,26,'Cauca'),
+	(2,27,'Nechí'),
+	(2,28,'Cesar'),
+	(2,29,'Bajo Magdalena'),
+	(3,31,'Inírida'),
+	(3,32,'Guaviare'),
+	(3,33,'Vichada'),
+	(3,34,'Tomo'),
+	(3,35,'Meta'),
+	(3,36,'Casanare'),
+	(3,37,'Arauca'),
+	(3,38,'Orinoco Directos'),
+	(3,39,'Apure'),
+	(4,41,'Guanía'),
+	(4,42,'Vaupes'),
+	(4,43,'Apaporis'),
+	(4,44,'Caquetá'),
+	(4,45,'Yarí'),
+	(4,46,'Caguán'),
+	(4,47,'Putumayo'),
+	(4,48,'Amazonas - Directos'),
+	(4,49,'Napo'),
+	(5,51,'Mira'),
+	(5,52,'Patía'),
+	(5,53,'Tapaje - Dagua - Directos'),
+	(5,54,'San Juán'),
+	(5,55,'Baudó - Directos Pacifico'),
+	(5,56,'Pacífico - Directos');

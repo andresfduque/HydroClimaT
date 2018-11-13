@@ -1,0 +1,13 @@
+ID,Variable,Speciation,Unidades,MedioMuestreo,TipoValor,Continua,Temporal,Time Resolution,Type,CategoriaGeneral,NoData
+1,Precipitation,Not Applicable,54,Precipitation,Field Observation,1,1,day,Cumulative,Climate,-9999
+2,Precipitation,Not Applicable,54,Precipitation,Field Observation,1,1,month,Average,Climate,-9999
+3,Precipitation,Not Applicable,54,Precipitation,Field Observation,1,1,month,Maximum,Climate,-9999
+4,Streamflow,Not Applicable,36,Surface water,Field Observation,1,1,day,Average,Hydrology,-9999
+5,Streamflow,Not Applicable,36,Surface water,Field Observation,1,1,month,Maximum,Hydrology,-9999
+6,Streamflow,Not Applicable,36,Surface water,Field Observation,1,1,month,Minimum,Hydrology,-9999
+7,Water depth,Not Applicable,47,Surface water,Field Observation,1,1,day,Average,Hydrology,-9999
+8,Water depth,Not Applicable,47,Surface water,Field Observation,1,1,month,Maximum,Hydrology,-9999
+9,Water depth,Not Applicable,47,Surface water,Field Observation,1,1,month,Minimum,Hydrology,-9999
+10,"Solids, total suspended",Not Applicable,364,Surface water,Field Observation,1,1,day,Average,Hydrology,-9999
+11,"Solids, total suspended",Not Applicable,364,Surface water,Field Observation,1,1,month,Maximum,Hydrology,-9999
+12,"Solids, total suspended",Not Applicable,364,Surface water,Field Observation,1,1,month,Minimum,Hydrology,-9999

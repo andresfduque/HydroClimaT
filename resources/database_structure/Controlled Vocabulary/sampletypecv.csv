@@ -1,0 +1,35 @@
+Term,Definition
+Automated,Sample collected using an automated sampler
+Core,Core sample resulting in a section of a substance
+FD ,Foliage Digestion
+FF ,Forest Floor Digestion
+FL ,Foliage Leaching
+Grab,Grab sample
+GW ,Groundwater
+LF ,Litter Fall Digestion
+meteorological,"sample type can include a number of measured sample types including temperature, RH, solar radiation, precipitation, wind speed, wind direction."
+No Sample,There is no lab sample associated with this measurement
+PB ,Precipitation Bulk
+PD ,Petri Dish (Dry Deposition)
+PE ,Precipitation Event
+PI ,Precipitation Increment
+Pump,Water column pump
+PW ,Precipitation Weekly
+Rake,"A long-handled implement with a row of projecting teeth at its head, used to gather objects at the ground-surface"
+RE ,Rock Extraction
+Rosette sampler,A device with a cluster of sampling bottles that is lowered into a fluid
+SE ,Stemflow Event
+Sonde,"A device such as a CTD which measures variables such as conductivity, temperature, and depth, that is lowered into a body of water"
+SR ,Standard Reference
+SS,Streamwater Suspended Sediment
+SW ,Streamwater
+TE ,Throughfall Event
+TI ,Throughfall Increment
+Trap,"A device or enclosure designed to catch and retain animals, typically by allowing entry but not exit or by catching hold of a part of the body"
+Trawl,a sample collected by equipment towed behind a vessel
+TW ,Throughfall Weekly
+Unknown,The sample type is unknown
+VE ,Vadose Water Event
+Vertical Plankton Net,"A plankton net that is towed vertically from a ship, the ship is not moving."
+VI ,Vadose Water Increment
+VW ,Vadose Water Weekly
