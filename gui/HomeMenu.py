@@ -1,60 +1,160 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jun 26 11:51:16 2017
+# Created by AndresD at 13/11/18
 
-DATABASES EDITOR:
-    + Create and environmental database from template
-        - create source
-        - create site
-        - create variable
-        - create method
-    + Import
+Features:
+    + Manage database connections
+        - Connect/Disconnect database (PostgreSQL, SQLite3)
+    + Edit database
+        - Create site
+        - Create source
+        - Create method
+        - Create variable
+    + Import data
+        - IDEAM (Text-file, SIRH, )
+        - SIATA (Future support)
+        
+    + Hydrology and climate time series management
+    + Series processing, statistics and advanced analysis
 
-REQUIREMENTS:
-    + PostgreSQL 9.6 or SQLITE3
-    + psycopg2 [python module]
-    + SQL Alchemy [python module]
-
-@author:    Andrés Felipe Duque Pérez
-email:      andresfduque@gmail.com
+@author:    Andres Felipe Duque Perez
+Email:      andresfduque@gmail.com
 """
+# TODO: add SIATA support
 
 # %% Main imports
-
 import os
 import numpy as np
 import pandas as pd
 import ManageDatabases as myDb
 from DatabaseCV import importCV
 from DatabaseDeclarative import Base
-from psycopg2.extensions import register_adapter, AsIs
 from PyQt5.QtGui import QRegExpValidator
-from PyQt5.QtCore import QRegExp, pyqtSignal, Qt
-from PyQt5.QtWidgets import (QHBoxLayout, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget, QMessageBox, QTabWidget,
-                             QDialog, QFormLayout, QCheckBox)
+from PyQt5.QtCore import pyqtSignal, Qt, QRegExp, pyqtSlot
+from psycopg2.extensions import register_adapter, AsIs
+from PyQt5.QtWidgets import (QComboBox, QHBoxLayout, QPushButton, QVBoxLayout, QWidget, QMessageBox, QTabWidget,
+                             QMainWindow, QDockWidget, QStackedWidget, QLabel, QLineEdit, QFormLayout, QCheckBox, QSizePolicy)
+
+
+# Main Workspace widget and database/time-series management
+class HomeWidget(QMainWindow):
+    def __init__(self, parent=None):
+        super(HomeWidget, self).__init__(parent)
+
+        # dock-widget for database management
+        self.dbCombobox = QComboBox()                   # combobox with connection names
+        self.HLayout3 = QHBoxLayout()                   # layout for database connect/edit and database explore
+        self.HLayout1 = QHBoxLayout()                   # layout for database selection
+        self.HLayout2 = QHBoxLayout()                   # layout for buttons
+        self.VLayout1 = QVBoxLayout()                   # final layout
+        self.psqlWidget = QWidget()                     # database connection widget
+        self.widget = QWidget()                         # widget defining dock-database widget
+        self.connButton = QPushButton('Connect')        # connect to selected database
+        self.delConnButton = QPushButton('Delete')      # delete connection parameters
+        self.delConnButton.setEnabled(False)
+        self.dbCombobox.addItem('PostgreSQL')           # supported database
+        self.dbCombobox.addItem('SQLite3')              # TODO: add future support
+
+        # set buttons layout
+        self.HLayout2.addWidget(self.connButton)
+        self.HLayout2.addWidget(self.delConnButton)
+
+        # set dock-widget for database connection
+        self.postgresForm = PostgresForm()
+        self.VLayout1.setAlignment(Qt.AlignTop)
+        self.VLayout1.addWidget(self.dbCombobox)
+        self.VLayout1.addWidget(self.postgresForm)
+        self.VLayout1.addLayout(self.HLayout1)
+        self.VLayout1.setContentsMargins(0, 6, 0, 0)
+        self.widget.setLayout(self.VLayout1)
+
+        self.dockDatabaseTitle = QLabel('Database connection')
+        self.dockDatabaseTitle.setStyleSheet('background-color: rgb(158,162,170); border-radius: 3px; font:bold; '
+                                             'font-size: 12px')
+        self.dockDatabaseTitle.setContentsMargins(5, 5, 0, 5)
+
+        self.dockDatabase = QDockWidget()
+        self.dockDatabase.setWidget(self.widget)
+        self.dockDatabase.setAllowedAreas(Qt.LeftDockWidgetArea)
+        self.dockDatabase.setMinimumWidth(445)
+        self.dockDatabase.setMinimumHeight(300)
+        self.dockDatabase.setTitleBarWidget(self.dockDatabaseTitle)
+
+        # dock-widget for database edition
+        self.dockDbEditTitle = QLabel('Edit Database')
+        self.dockDbEditTitle.setStyleSheet('background-color: rgb(158,162,170); border-radius: 3px; font:bold; '
+                                           'font-size: 12px')
+        self.dockDbEditTitle.setContentsMargins(5, 5, 0, 5)
+
+        self.dockDbEdit = QDockWidget()
+        self.dockDbEdit.setAllowedAreas(Qt.LeftDockWidgetArea)
+        self.dockDbEdit.setMinimumWidth(445)
+        self.dockDbEdit.setMinimumHeight(300)
+        self.dockDbEdit.treeWidget = None
+        self.dockDbEdit.setTitleBarWidget(self.dockDbEditTitle)
+
+        # dock-widget for database explorer
+        self.dockDbExploreTitle = QLabel('Database Explorer')
+        self.dockDbExploreTitle.setStyleSheet('background-color: rgb(158,162,170); border-radius: 3px; font:bold; '
+                                              'font-size: 12px')
+        self.dockDbExploreTitle.setContentsMargins(5, 5, 0, 5)
+        self.dockDbExplore = QDockWidget()
+        self.dockDbExplore.setAllowedAreas(Qt.RightDockWidgetArea)
+        self.dockDbExplore.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+
+        self.dockDbExplore.setMinimumWidth(800)
+        self.dockDbExplore.setSizePolicy(QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding))
+        self.dockDbExplore.setMinimumHeight(300)
+        self.dockDbExplore.treeWidget = None
+        self.dockDbExplore.setTitleBarWidget(self.dockDbExploreTitle)
+
+        # stacked-widget for multiple database analysis
+        self.stackedWorkspace = QStackedWidget()
+
+        # assemble home widget
+        self.setCentralWidget(self.stackedWorkspace)
+        self.addDockWidget(Qt.LeftDockWidgetArea, self.dockDatabase)
+        self.addDockWidget(Qt.LeftDockWidgetArea, self.dockDbEdit)
+        self.addDockWidget(Qt.RightDockWidgetArea, self.dockDbExplore)
+
+        self.setContentsMargins(5, 5, 5, 5)
+
+        self.postgresForm.connDbSignal.connect(self.connDbSig)
+
+    @pyqtSlot(object)
+    def connDbSig(self):
+        self.postgresForm.databaseLe.setEnabled(False)
+        self.postgresForm.connNameLe.setEnabled(False)
+        self.postgresForm.userLe.setEnabled(False)
+        self.postgresForm.passLe.setEnabled(False)
+        self.postgresForm.hostLe.setEnabled(False)
+        self.postgresForm.portLe.setEnabled(False)
+        self.postgresForm.serviceLe.setEnabled(False)
+        self.postgresForm.userCheck.setEnabled(False)
+        self.postgresForm.passCheck.setEnabled(False)
+        self.postgresForm.connButton.setEnabled(False)
+        self.postgresForm.delButton.setEnabled(False)
+        self.postgresForm.newButton.setEnabled(False)
 
 
 # %% Numpy sql adapter
-def adapt_numpy_int64(numpy_int64):
-    return AsIs(numpy_int64)
+# def adapt_numpy_int64(numpy_int64):
+#     return AsIs(numpy_int64)
 
 
 # %% Widget design for databases connections
 # noinspection PyUnresolvedReferences
-class PostgresForm(QDialog):
-    # signal to pass dictionary to databases dock-widget
-    connDict = pyqtSignal(object)
+class PostgresForm(QWidget):
+    # signals
+    connDbSignal = pyqtSignal(object)   # send succesfull connection signal
+    connDict = pyqtSignal(object)       # signal to pass dictionary to databases dock-widget
 
     def __init__(self, parent=None):
         super(PostgresForm, self).__init__(parent)
 
         # design of QDialog layout
         self.db_conn_widget = QWidget()
-        self.dbFormTitle = QLabel('Connection information')
-        self.dbFormTitle.setAlignment(Qt.AlignLeft)
-        self.dbFormTitle.setStyleSheet('font:bold;')
-
         self.dbForm = QFormLayout()     # form for database connection information
         self.userForm = QFormLayout()   # form for authentication
         self.userWidget = QWidget()     # widget with user form layout - added to tabUser
@@ -71,22 +171,21 @@ class PostgresForm(QDialog):
         self.passLe.setEchoMode(QLineEdit.Password)
         self.hostLe = QLineEdit('localhost')
         self.portLe = QLineEdit('5432')
+        self.serviceLe = QLineEdit()
 
         self.userCheck = QCheckBox('Save')
         self.passCheck = QCheckBox('Save')
 
-        self.connButton = QPushButton('Add connection')
+        self.connButton = QPushButton('Connect database')
         self.newButton = QPushButton('New database')
         self.delButton = QPushButton('Delete database')
-        self.cancelButton = QPushButton('Close')
 
         # database connection
-        self.dbForm.addRow(self.dbFormTitle)
-        self.dbForm.addRow('Name', self.connNameLe)
-        self.dbForm.addRow('Service', QLineEdit())
+        self.dbForm.addRow('User', self.connNameLe)
+        self.dbForm.addRow('Service', self.serviceLe)
         self.dbForm.addRow('Host', self.hostLe)
         self.dbForm.addRow('Port', self.portLe)
-        self.dbForm.addRow('Database', self.databaseLe)
+        self.dbForm.addRow('DB Name', self.databaseLe)
 
         self.HLayout1.addWidget(self.userLe)
         self.HLayout1.addWidget(self.userCheck)
@@ -95,7 +194,6 @@ class PostgresForm(QDialog):
         self.HLayout3.addWidget(self.connButton)
         self.HLayout3.addWidget(self.newButton)
         self.HLayout3.addWidget(self.delButton)
-        self.HLayout3.addWidget(self.cancelButton)
         self.userForm.addRow('Username', self.HLayout1)
         self.userForm.addRow('Password', self.HLayout2)
 
@@ -113,7 +211,6 @@ class PostgresForm(QDialog):
         self.connButton.clicked.connect(self.connPostgresDB)
         self.newButton.clicked.connect(self.createPostgresDB)
         self.delButton.clicked.connect(self.delPostgresDB)
-        self.cancelButton.clicked.connect(self.closeDialog)
 
         self.regex1 = QRegExp("[0-9]+")
         self.validator1 = QRegExpValidator(self.regex1)
@@ -144,6 +241,7 @@ class PostgresForm(QDialog):
                                                                      'successfully', QMessageBox.Ok)
 
                 # emit connection parameters to database toolbars, then to the database dock-widget
+                self.connDbSignal.emit(1)
                 self.connDict.emit(psqlConnDict)
 
             else:
@@ -219,6 +317,52 @@ class PostgresForm(QDialog):
     def closeDialog(self):
         self.close()
 
+
+# %% Widget to visualize database
+class DbExplorer(QWidget):
+    def __init__(self, parent=None):
+        super(DbExplorer, self).__init__(parent)
+
+        self.label = QLabel('Explore Database')
+        self.label.setStyleSheet('background-color: rgb(158,162,170); border-radius: 3px; font:bold; '
+                                 'font-size: 12px')
+        self.label.setContentsMargins(5, 5, 0, 5)
+
+        self.VLayout = QVBoxLayout()
+        self.HLayout = QHBoxLayout()
+
+        self.subWindow = QMainWindow()
+        self.dockGraphs = QDockWidget('Time-series')
+        self.dockAuxGraphs = QDockWidget('Aux Graphics')
+        self.dockStatistics = QDockWidget('Statistics')
+
+        #        self.timeseriesPlot = pg.PlotWidget()
+        #        self.dockGraphs.setWidget(self.timeseriesPlot)
+
+        self.dockGraphs.setAllowedAreas(Qt.RightDockWidgetArea)
+        self.dockAuxGraphs.setAllowedAreas(Qt.RightDockWidgetArea)
+        self.dockStatistics.setAllowedAreas(Qt.RightDockWidgetArea)
+        self.dockGraphs.setMinimumWidth(350)
+        self.dockGraphs.setMinimumHeight(300)
+        self.dockStatistics.setMinimumHeight(300)
+        self.dockAuxGraphs.setMinimumHeight(300)
+
+        self.tabWorkspace = QTabWidget()
+        self.tabWorkspace.setMinimumWidth(250)
+
+        self.subWindow.setCentralWidget(self.tabWorkspace)
+        self.subWindow.addDockWidget(Qt.RightDockWidgetArea, self.dockGraphs)
+        self.subWindow.addDockWidget(Qt.RightDockWidgetArea, self.dockAuxGraphs)
+        self.subWindow.addDockWidget(Qt.RightDockWidgetArea, self.dockStatistics)
+        self.subWindow.tabifyDockWidget(self.dockGraphs, self.dockAuxGraphs)
+        self.dockGraphs.raise_()
+
+        self.VLayout.addWidget(self.label)
+        self.VLayout.addWidget(self.subWindow)
+
+        self.VLayout.setContentsMargins(5, 0, 0, 0)
+
+        self.setLayout(self.VLayout)
 
 def formatIdeamDatabase(engine):
     register_adapter(np.int64, adapt_numpy_int64)

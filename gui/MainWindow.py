@@ -1,23 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jun 21 19:38:52 2017
+# Created by AndresD at 13/11/18
 
-HYDRO-CLIMAT MAIN GUI:
-    + Hydrology and climate time series management
+Features:
     + Databases creation and edition
+    + Hydrology and climate time series management
     + Series processing, statistics and advanced analysis
 
-REQUIREMENTS:
-    + PostgreSQL 10.1 or SQLITE3
-    + psycopg2 [python module]
-    + SQL Alchemy [python module]
-
-@author:    Andrés Felipe Duque Pérez
-email:      andresfduque@gmail.com
+@author:    Andres Felipe Duque Perez
+Email:      andresfduque@gmail.com
 """
+# TODO: add GIS support
+# TODO: add morphometric analysis
 
-# %% Main imports
+# %%  Main imports
 import sys
 import TableViews
 import DatabaseEditor
@@ -25,19 +22,19 @@ import pandas as pd
 import pyqtgraph as pg
 import ManageDatabases as myDB
 import SQLAlchemyQueries as sqlQuery
-from DatabaseConnections import PostgresForm
+
+from HomeMenu import HomeWidget, PostgresForm
 
 from PyQt5.QtGui import QIcon, QKeySequence
 from PyQt5.QtCore import pyqtSlot, pyqtSignal, Qt, QFileInfo, QFile, QTextStream
-from PyQt5.QtWidgets import (QComboBox, QGridLayout, QHBoxLayout, QPushButton, QVBoxLayout, QWidget, QMessageBox,
-                             QTabWidget, QMainWindow, QToolBar, QApplication, QTextEdit, QAction, QFileDialog,
-                             QDockWidget, QStackedWidget, QStyleFactory, QLabel)
+from PyQt5.QtWidgets import (QGridLayout, QHBoxLayout, QVBoxLayout, QWidget, QMessageBox, QTabWidget, QMainWindow,
+                             QToolBar, QApplication, QTextEdit, QAction, QFileDialog, QDockWidget, QStyleFactory,
+                             QLabel)
 
 import qrc_resources
 
 
 # Project management toolbar for home ribbon
-# noinspection PyUnresolvedReferences
 class ProjectToolbar(QToolBar):
 
     def __init__(self, parent=None):
@@ -235,84 +232,9 @@ class TabMenu(QTabWidget):
     def __init__(self, parent=None):
         super(TabMenu, self).__init__(parent)
 
-        homeMainWindow = QMainWindow()                     # main-window to add home toolbars
-        self.projectToolbar = ProjectToolbar()                   # project management toolbar
-        self.databaseToolbar = DatabaseToolbar()                 # database conn management toolbar
-        homeMainWindow.addToolBar(self.projectToolbar)               # add toolbar to main-window
-        homeMainWindow.addToolBar(self.databaseToolbar)              # add toolbar to main-window
-
-        self.addTab(homeMainWindow, 'Project')                  # add homeMainWindow to a tab
-        if sys.platform == 'win32':
-            self.setFixedHeight(65)
-        elif sys.platform == 'linux':
-            self.setFixedHeight(66)
-
-
-# Main Workspace widget and database/time-series management
-class WorkSpace(QMainWindow):
-    def __init__(self, parent=None):
-        super(WorkSpace, self).__init__(parent)
-
-        # dock-widget for database management
-        self.dbCombobox = QComboBox()                   # combobox with connection names
-        self.HLayout1 = QHBoxLayout()                   # layout for buttons
-        self.VLayout1 = QVBoxLayout()                   # final layout
-        self.widget = QWidget()                         # widget defining dock-database widget
-        self.connButton = QPushButton('Connect')        # connect to selected database
-        self.delConnButton = QPushButton('Delete')      # delete connection parameters
-        self.delConnButton.setEnabled(False)
-
-        # set buttons layout
-        self.HLayout1.addWidget(self.connButton)
-        self.HLayout1.addWidget(self.delConnButton)
-
-        # set dock-widget layout
-        self.VLayout1.setAlignment(Qt.AlignTop)
-        self.VLayout1.addWidget(self.dbCombobox)
-        self.VLayout1.addLayout(self.HLayout1)
-        self.VLayout1.setContentsMargins(0, 6, 0, 0)
-        self.widget.setLayout(self.VLayout1)
-
-        self.dockDatabaseTitle = QLabel('Database connection')
-        self.dockDatabaseTitle.setStyleSheet('background-color: rgb(158,162,170); border-radius: 3px')
-        self.dockDatabaseTitle.setContentsMargins(5, 5, 0, 5)
-
-        self.dockDatabase = QDockWidget()
-        self.dockDatabase.setWidget(self.widget)
-        self.dockDatabase.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea)
-        self.dockDatabase.setMinimumWidth(445)
-        self.dockDatabase.setMinimumHeight(300)
-        self.dockDatabase.setTitleBarWidget(self.dockDatabaseTitle)
-
-        # dock-widget for time-series management
-        self.dockTimeseriesTitle = QLabel('Time series')
-        self.dockTimeseriesTitle.setStyleSheet('background-color: rgb(158,162,170); border-radius: 3px')
-        self.dockTimeseriesTitle.setContentsMargins(5, 5, 0, 5)
-
-        self.dockTimeseries = QDockWidget()
-        self.dockTimeseries.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea)
-        self.dockTimeseries.setMinimumWidth(445)
-        self.dockTimeseries.setMinimumHeight(300)
-        self.dockTimeseries.treeWidget = None
-        self.dockTimeseries.setTitleBarWidget(self.dockTimeseriesTitle)
-
-        self.treeWidget = TableViews.TimeseriesTreeView()
-        self.HLayout = QHBoxLayout()
-        self.treeWidget1 = QWidget()
-        self.HLayout.addWidget(self.treeWidget)
-        self.HLayout.setContentsMargins(0, 10, 0, 0)
-        self.treeWidget1.setLayout(self.HLayout)
-
-        self.dockTimeseries.setWidget(self.treeWidget1)
-
-        # stacked-widget for multiple time-series analysis
-        self.stackedWorkspace = QStackedWidget()
-
-        # assemble workspace widget
-        self.setCentralWidget(self.stackedWorkspace)
-        self.addDockWidget(Qt.LeftDockWidgetArea, self.dockDatabase)
-        self.addDockWidget(Qt.LeftDockWidgetArea, self.dockTimeseries)
-
+        self.homeMainWindow = HomeWidget()          # main-window to add home toolbars
+        self.addTab(self.homeMainWindow, 'Home')    # add homeMainWindow to a tab
+        self.setTabShape(0)
 
 # Workspace widget for time-series processing
 class TimeseriesWorkspace(QWidget):
@@ -387,31 +309,32 @@ class HydroClimate(QMainWindow):
         self.timeseriesPlot = None
         self.timeseriesWorkspace = None
         self.timeseriesVectorWidget = None
+        self.setContentsMargins(10, 10, 10, 10)
 
         # main window layout
         self.mainGrid = QGridLayout()                                   # layout of main window
         self.widget = QWidget(self)                                     # widget to set main window layout
         self.VLayout = QVBoxLayout()                                    # layout for database management widgets
         self.tabMenu = TabMenu()                                        # tab-widget for toolbars
-        self.tabMenu.databaseToolbar.connSignal.connect(self.addDBConn)   # add database connection
-        self.workspace = WorkSpace()                                    # widget to display time-series analysis
+        # self.tabMenu.databaseToolbar.connSignal.connect(self.addDBConn)   # add database connection
+        # self.workspace = HomeWidget()                                    # widget to display time-series analysis
 
-        self.workspace.treeWidget.setHidden(True)
-        self.workspace.stackedWorkspace.addWidget(TimeseriesWorkspace())
-        self.workspace.connButton.clicked.connect(self.connDatabase)
-        self.workspace.delConnButton.clicked.connect(self.deleteConnection)
-        self.workspace.treeWidget.workspaceTimeSeries.connect(self.getTimeSeries)
-        self.workspace.treeWidget.changeWorkspace.connect(self.changeWorkspace)
+        # self.workspace.treeWidget.setHidden(True)
+        # self.workspace.stackedWorkspace.addWidget(TimeseriesWorkspace())
+        # self.workspace.connButton.clicked.connect(self.connDatabase)
+        # self.workspace.delConnButton.clicked.connect(self.deleteConnection)
+        # self.workspace.treeWidget.workspaceTimeSeries.connect(self.getTimeSeries)
+        # self.workspace.treeWidget.changeWorkspace.connect(self.changeWorkspace)
 
         self.VLayout.addWidget(self.tabMenu)
         self.VLayout.addWidget(QTextEdit())
         self.mainGrid.addWidget(self.tabMenu, 0, 0)
 
         self.mainGrid.setAlignment(Qt.AlignTop)
-        self.mainGrid.addWidget(self.workspace, 1, 0)
+        # self.mainGrid.addWidget(self.workspace, 1, 0)
         self.widget.setLayout(self.mainGrid)
 
-        self.setCentralWidget(self.widget)
+        self.setCentralWidget(self.tabMenu)
 #        self.busyIndicator = QtWaitingSpinner(self.centralWidget())
         self.setWindowTitle("Hydro-ClimaT")
         self.move(200, 100)
@@ -635,7 +558,7 @@ if __name__ == '__main__':
     if sys.platform == 'win32':
         QApplication.setStyle(QStyleFactory.create('fusion'))
     elif sys.platform == 'linux':
-        QApplication.setStyle(QStyleFactory.create('fusion'))
+        QApplication.setStyle(QStyleFactory.create('cleanlooks'))
 
     app = QApplication(sys.argv)
     dialog = HydroClimate()
