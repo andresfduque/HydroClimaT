@@ -26,7 +26,7 @@ create table ODM2.Annotations (
 	annotationutcoffset integer  NULL,
 	annotationlink varchar (255) NULL,
 	annotatorid integer  NULL,
-	citationid integer  NULL
+	citationidActionextensionpropertyvalues integer  NULL
 );
 create table ODM2.CategoricalResultValueAnnotations (
 	bridgeid serial  NOT NULL primary key,
