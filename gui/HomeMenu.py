@@ -28,9 +28,11 @@ import os
 import numpy as np
 import pandas as pd
 import ManageDatabases as myDb
+
 from DatabaseCV import importCV
 from DatabaseDeclarative import Base
 from PyQt5.QtGui import QRegExpValidator
+from odm2api.ODMconnection import dbconnection
 from PyQt5.QtCore import pyqtSignal, Qt, QRegExp, pyqtSlot
 from psycopg2.extensions import register_adapter, AsIs
 from PyQt5.QtWidgets import (QComboBox, QHBoxLayout, QPushButton, QVBoxLayout, QWidget, QMessageBox, QTabWidget,
@@ -43,7 +45,6 @@ class HomeWidget(QMainWindow):
         super(HomeWidget, self).__init__(parent)
 
         # dock-widget for database management
-        self.dbCombobox = QComboBox()                   # combobox with connection names
         self.HLayout3 = QHBoxLayout()                   # layout for database connect/edit and database explore
         self.HLayout1 = QHBoxLayout()                   # layout for database selection
         self.HLayout2 = QHBoxLayout()                   # layout for buttons
@@ -53,17 +54,13 @@ class HomeWidget(QMainWindow):
         self.connButton = QPushButton('Connect')        # connect to selected database
         self.delConnButton = QPushButton('Delete')      # delete connection parameters
         self.delConnButton.setEnabled(False)
-        self.dbCombobox.addItem('PostgreSQL')           # supported database
-        self.dbCombobox.addItem('SQLite3')              # TODO: add future support
 
         # set buttons layout
         self.HLayout2.addWidget(self.connButton)
-        self.HLayout2.addWidget(self.delConnButton)
 
         # set dock-widget for database connection
         self.postgresForm = PostgresForm()
         self.VLayout1.setAlignment(Qt.AlignTop)
-        self.VLayout1.addWidget(self.dbCombobox)
         self.VLayout1.addWidget(self.postgresForm)
         self.VLayout1.addLayout(self.HLayout1)
         self.VLayout1.setContentsMargins(0, 6, 0, 0)
@@ -155,15 +152,17 @@ class PostgresForm(QWidget):
 
         # design of QDialog layout
         self.db_conn_widget = QWidget()
-        self.dbForm = QFormLayout()     # form for database connection information
-        self.userForm = QFormLayout()   # form for authentication
-        self.userWidget = QWidget()     # widget with user form layout - added to tabUser
-        self.tabUser = QTabWidget()     # tab-widget for database access authentication
-        self.HLayout1 = QHBoxLayout()   # layout for username credentials
-        self.HLayout2 = QHBoxLayout()   # layout for password credentials
-        self.HLayout3 = QHBoxLayout()   # layout for buttons
-        self.VLayout = QVBoxLayout()    # final layout
+        self.dbForm = QFormLayout()                     # form for database connection information
+        self.userForm = QFormLayout()                   # form for authentication
+        self.userWidget = QWidget()                     # widget with user form layout - added to tabUser
+        self.tabUser = QTabWidget()                     # tab-widget for database access authentication
+        self.HLayout1 = QHBoxLayout()                   # layout for username credentials
+        self.HLayout2 = QHBoxLayout()                   # layout for password credentials
+        self.HLayout3 = QHBoxLayout()                   # layout for buttons
+        self.VLayout = QVBoxLayout()                    # final layout
 
+        self.dbCombobox = QComboBox()                   # combobox with connection names
+        self.databaseLe = QLineEdit('odm_col')
         self.databaseLe = QLineEdit('odm_col')
         self.connNameLe = QLineEdit('postgres')
         self.userLe = QLineEdit('postgres')
@@ -172,6 +171,9 @@ class PostgresForm(QWidget):
         self.hostLe = QLineEdit('localhost')
         self.portLe = QLineEdit('5432')
         self.serviceLe = QLineEdit()
+        self.dbCombobox.addItem('PostgreSQL')           # supported database
+        self.dbCombobox.addItem('MySQL')                # TODO: add future support
+        self.dbCombobox.addItem('SQLite3')              # TODO: add future support
 
         self.userCheck = QCheckBox('Save')
         self.passCheck = QCheckBox('Save')
@@ -181,6 +183,7 @@ class PostgresForm(QWidget):
         self.delButton = QPushButton('Delete database')
 
         # database connection
+        self.dbForm.addRow('DB Engine', self.dbCombobox)
         self.dbForm.addRow('User', self.connNameLe)
         self.dbForm.addRow('Service', self.serviceLe)
         self.dbForm.addRow('Host', self.hostLe)
@@ -208,9 +211,9 @@ class PostgresForm(QWidget):
 
         self.setMinimumWidth(400)
         self.setWindowTitle('Create a New Postgres Connection')
-        self.connButton.clicked.connect(self.connPostgresDB)
-        self.newButton.clicked.connect(self.createPostgresDB)
-        self.delButton.clicked.connect(self.delPostgresDB)
+        self.connButton.clicked.connect(self.connDB)
+        self.newButton.clicked.connect(self.createDB)
+        self.delButton.clicked.connect(self.delDB)
 
         self.regex1 = QRegExp("[0-9]+")
         self.validator1 = QRegExpValidator(self.regex1)
@@ -221,7 +224,7 @@ class PostgresForm(QWidget):
         self.connNameLe.setValidator(self.validator2)
 
     # connect to postgres database using ManageDatabases module
-    def connPostgresDB(self):
+    def connDB(self):
         # connection parameters
         db_user = str(self.userLe.text())
         db_pass = str(self.passLe.text())
@@ -251,7 +254,7 @@ class PostgresForm(QWidget):
             QMessageBox.critical(self, 'Database connection error', Err, QMessageBox.Ok)
 
     # create postgres database using ManageDatabases module
-    def createPostgresDB(self):
+    def createDB(self):
         # connection parameters
         dbUser = str(self.userLe.text())
         dbPass = str(self.passLe.text())
@@ -260,35 +263,38 @@ class PostgresForm(QWidget):
         dbName = str(self.databaseLe.text())
 
         # create database
-        Engine, Err = myDb.psql_create_db(dbUser, dbPass, dbName, dbHost, dbPort)
+        engine, err = myDb.psql_create_db(dbUser, dbPass, dbName, dbHost, dbPort)
 
-        if not Err:
-            psqlConnDict = {'user': dbUser, 'password': dbPass, 'dbname': dbName,
-                            'host': dbHost, 'port': dbPort, 'connName': self.connNameLe.text(),
-                            'driver': 'postgres'}
-            if '' not in psqlConnDict.values():
-                Engine, Meta, Err = myDb.psql_conn(dbUser, dbPass, dbName, dbHost, dbPort)
-                Base.metadata.create_all(Engine)
+        if not err:
+            session_factory = dbconnection.createConnection(engine='postgresql', address=dbHost, db=dbName, user=dbUser,
+                                                            password=dbPass, dbtype=2.0, echo=True)
+            assert session_factory is not None, ('failed to create a session for ', 'postgresql', dbHost)
+            assert session_factory.engine is not None, ('failed: session has no engine ', 'postgresql', dbHost)
+            s = session_factory.getSession()
+            if 'postgresql' == 'postgresql':
+                build = open(os.path.dirname(os.getcwd()) + '/schemas/postgresql/ODM2_for_PostgreSQL.sql').read()
+                for line in build.split(';\n'):
+                    s.execute(line)
+                s.flush()
+            s.commit()
 
-                importCV(Engine)  # import controlled vocabulary to database
+            # importCV(Engine)  # import controlled vocabulary to database
 
-                QMessageBox.information(self, 'Database creation', 'New POSTGRES database "' +
-                                        dbName.upper() + '" created successfully', QMessageBox.Ok)
-                reply = QMessageBox.question(self, 'Format database', 'Format database to fit IDEAM data?',
-                                             QMessageBox.Yes | QMessageBox.No)
-                # format database to fit IDEAM datastructure (optional)structure
-                if reply == QMessageBox.Yes:
-                    formatIdeamDatabase(Engine)
-                    QMessageBox.information(self, 'Database structure', '"' + dbName.upper() +
-                                            '" database has been structured to fit IDEAM data', QMessageBox.Ok)
-            else:
-                QMessageBox.critical(self, 'Database connection error', 'Make sure all requested '
-                                                                        'fields are filled', QMessageBox.Ok)
+            QMessageBox.information(self, 'Database creation', 'New POSTGRES database "' +
+                                    dbName.upper() + '" created successfully', QMessageBox.Ok)
+            reply = QMessageBox.question(self, 'Format database', 'Format database to fit IDEAM data?',
+                                         QMessageBox.Yes | QMessageBox.No)
+            # format database to fit IDEAM datastructure (optional)structure
+            if reply == QMessageBox.Yes:
+                formatIdeamDatabase(Engine)
+                QMessageBox.information(self, 'Database structure', '"' + dbName.upper() +
+                                        '" database has been structured to fit IDEAM data', QMessageBox.Ok)
+
         else:
-            QMessageBox.critical(self, 'Database creation error', Err, QMessageBox.Ok)
+            QMessageBox.critical(self, 'Database creation error', err, QMessageBox.Ok)
 
     # delete postgres database using ManageDatabases module
-    def delPostgresDB(self):
+    def delDB(self):
         # connection parameters
         dbUser = str(self.userLe.text())
         dbPass = str(self.passLe.text())

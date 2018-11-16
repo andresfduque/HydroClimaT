@@ -6,6 +6,10 @@
       <sourceFolder url="file://$MODULE_DIR$/icons" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/scripts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/schemas" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../ODM2PythonAPI">
+      <sourceFolder url="file://$MODULE_DIR$/../ODM2PythonAPI" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
