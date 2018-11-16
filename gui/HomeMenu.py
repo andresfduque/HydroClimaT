@@ -12,7 +12,7 @@ Features:
         - Create method
         - Create variable
     + Import data
-        - IDEAM (Text-file, SIRH, )
+        - IDEAM (Text-file, SIRH, DHIME)
         - SIATA (Future support)
         
     + Hydrology and climate time series management
@@ -22,6 +22,7 @@ Features:
 Email:      andresfduque@gmail.com
 """
 # TODO: add SIATA support
+# TODO: add DHIME support
 
 # %% Main imports
 import os
@@ -233,9 +234,9 @@ class PostgresForm(QWidget):
         db_name = str(self.databaseLe.text())
 
         # connect database
-        Engine, Meta, Err = myDb.psql_conn(db_user, db_pass, db_name, db_host, db_port)
+        engine, meta, err = myDb.psql_conn(db_user, db_pass, db_name, db_host, db_port)
 
-        if not Err:
+        if not err:
             psqlConnDict = {'user': db_user, 'password': db_pass, 'db_name': db_name,
                             'host': db_host, 'port': db_port, 'connName': self.connNameLe.text(),
                             'driver': 'postgres'}
@@ -251,7 +252,7 @@ class PostgresForm(QWidget):
                 QMessageBox.critical(self, 'Database connection error', 'Make sure all requested '
                                                                         'fields are filled', QMessageBox.Ok)
         else:
-            QMessageBox.critical(self, 'Database connection error', Err, QMessageBox.Ok)
+            QMessageBox.critical(self, 'Database connection error', err, QMessageBox.Ok)
 
     # create postgres database using ManageDatabases module
     def createDB(self):
@@ -282,14 +283,6 @@ class PostgresForm(QWidget):
 
             QMessageBox.information(self, 'Database creation', 'New POSTGRES database "' +
                                     dbName.upper() + '" created successfully', QMessageBox.Ok)
-            reply = QMessageBox.question(self, 'Format database', 'Format database to fit IDEAM data?',
-                                         QMessageBox.Yes | QMessageBox.No)
-            # format database to fit IDEAM datastructure (optional)structure
-            if reply == QMessageBox.Yes:
-                formatIdeamDatabase(Engine)
-                QMessageBox.information(self, 'Database structure', '"' + dbName.upper() +
-                                        '" database has been structured to fit IDEAM data', QMessageBox.Ok)
-
         else:
             QMessageBox.critical(self, 'Database creation error', err, QMessageBox.Ok)
 
@@ -303,9 +296,9 @@ class PostgresForm(QWidget):
         dbName = str(self.databaseLe.text())
 
         # connect database
-        Err = myDb.psql_drop_db(dbUser, dbPass, dbName, dbHost, dbPort)
+        err = myDb.psql_drop_db(dbUser, dbPass, dbName, dbHost, dbPort)
 
-        if not Err:
+        if not err:
             psqlConnDict = {'user': dbUser, 'password': dbPass, 'dbname': dbName,
                             'host': dbHost, 'port': dbPort, 'connName': self.connNameLe.text(),
                             'driver': 'postgres'}
@@ -317,7 +310,7 @@ class PostgresForm(QWidget):
                 QMessageBox.critical(self, 'Database connection error', 'Make sure all requested '
                                                                         'fields are filled', QMessageBox.Ok)
         else:
-            QMessageBox.critical(self, 'Database connection error', Err, QMessageBox.Ok)
+            QMessageBox.critical(self, 'Database connection error', err, QMessageBox.Ok)
 
     # close dialog
     def closeDialog(self):
