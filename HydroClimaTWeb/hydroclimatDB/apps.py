@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class HydroclimatConfig(AppConfig):
-    name = 'hydroclimat'
+    name = 'hydroclimatDB'
