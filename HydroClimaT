@@ -1,2 +1,0 @@
-django-admin startproject HydroClimaTWeb # Create project
-python manage.py runserver 0:8000 # run server on IP 0.0.0.0:8000
