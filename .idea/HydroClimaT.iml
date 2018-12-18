@@ -8,9 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/scripts" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/schemas" isTestSource="false" />
     </content>
-    <content url="file://$MODULE_DIR$/../ODM2PythonAPI">
-      <sourceFolder url="file://$MODULE_DIR$/../ODM2PythonAPI" isTestSource="false" />
-    </content>
+    <content url="file://$MODULE_DIR$/../ODM2PythonAPI" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="R User Library" level="project" />
