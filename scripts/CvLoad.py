@@ -536,14 +536,14 @@ for count, (key, value) in enumerate(vocab):
         root = ET.fromstring(data)
         CVObject = value
         objs = []
-        for voc in root.findall(rdf %"Description"):
+        for voc in root.findall(rdf % "Description"):
             obj = CVObject()
             try:
-                obj.Term = voc.attrib[rdf%"about"].split('/')[-1]
-                obj.Name = voc.find(skos%"prefLabel").text
-                obj.Definition = voc.find(skos%"definition").text.encode('unicode_escape') if voc.find(skos%"definition") is not None else None
-                obj.Category = category = voc.find(odm2%"category").text if voc.find(odm2 % "category") is not None else None
-                obj.SourceVocabularyUri = voc.attrib[rdf%"about"]
+                obj.Term = voc.attrib[rdf % "about"].split('/')[-1]
+                obj.Name = voc.find(skos % "prefLabel").text
+                obj.Definition = voc.find(skos % "definition").text.encode('unicode_escape') if voc.find(skos%"definition") is not None else None
+                obj.Category = category = voc.find(odm2 % "category").text if voc.find(odm2 % "category") is not None else None
+                obj.SourceVocabularyUri = voc.attrib[rdf % "about"]
                 objs.append(obj)
             except Exception as e:
                 session.rollback()
@@ -557,8 +557,8 @@ for count, (key, value) in enumerate(vocab):
         session.rollback()
         if "Duplicate entry" in e.message:
             e = "Controlled Vocabulary has already been loaded"
-        print("\t...%s Load was unsuccesful: \n%s" % (key, e))
-        sys.stdout.write("\n\n... %sLoad was unsuccessful: %s\r"%(key,e))
+        print("\t...%s Load was unsuccessful: \n%s" % (key, e))
+        sys.stdout.write("\n\n... %sLoad was unsuccessful: %s\r" % (key, e))
         sys.stdout.flush()
 
 update_progress(len(vocab), "CV_Terms")
