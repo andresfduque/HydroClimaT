@@ -32,7 +32,7 @@ class CVActionType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CVActionType('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CVActionType('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVAggregationStatistic(Base):
@@ -46,8 +46,8 @@ class CVAggregationStatistic(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CVAggregationStatisticsType('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition,
-                                                                         self.Category)
+        return "<CVAggregationStatisticsType('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition,
+                                                                          self.Category)
 
 
 class CVAnnotationType(Base):
@@ -61,7 +61,7 @@ class CVAnnotationType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CVAnnotationType('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CVAnnotationType('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVCensorCode(Base):
@@ -75,7 +75,7 @@ class CVCensorCode(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CVActionType('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CVActionType('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVDatasetType(Base):
@@ -89,7 +89,7 @@ class CVDatasetType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVDataQualityType(Base):
@@ -103,7 +103,7 @@ class CVDataQualityType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVDirectiveType(Base):
@@ -117,7 +117,7 @@ class CVDirectiveType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVElevationDatum(Base):
@@ -131,7 +131,7 @@ class CVElevationDatum(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVEquipmentType(Base):
@@ -145,7 +145,7 @@ class CVEquipmentType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVMediumType(Base):
@@ -159,7 +159,7 @@ class CVMediumType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CVMedium('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CVMedium('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVMethodType(Base):
@@ -173,7 +173,7 @@ class CVMethodType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVOrganizationType(Base):
@@ -187,7 +187,7 @@ class CVOrganizationType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVPropertyDataType(Base):
@@ -201,21 +201,21 @@ class CVPropertyDataType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVQualityCode(Base):
-     __tablename__ = 'cv_qualitycode'
-     __table_args__ = {u'schema': 'odm2'}
+    __tablename__ = 'cv_qualitycode'
+    __table_args__ = {u'schema': 'odm2'}
 
-     Term = Column('term', String(255), nullable=False)
-     Name = Column('name', String(255), primary_key=True)
-     Definition = Column('definition', String(1000))
-     Category = Column('category', String(255))
-     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
+    Term = Column('term', String(255), nullable=False)
+    Name = Column('name', String(255), primary_key=True)
+    Definition = Column('definition', String(1000))
+    Category = Column('category', String(255))
+    SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
-     def __repr__(self):
-         return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+    def __repr__(self):
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVRelationshipType(Base):
@@ -229,7 +229,7 @@ class CVRelationshipType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVResultType(Base):
@@ -243,7 +243,7 @@ class CVResultType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVSamplingFeatureGeoType(Base):
@@ -257,7 +257,7 @@ class CVSamplingFeatureGeoType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVSamplingFeatureType(Base):
@@ -271,7 +271,7 @@ class CVSamplingFeatureType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVSpatialOffsetType(Base):
@@ -285,7 +285,7 @@ class CVSpatialOffsetType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVSpeciation(Base):
@@ -299,7 +299,7 @@ class CVSpeciation(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVSpecimenType(Base):
@@ -313,7 +313,7 @@ class CVSpecimenType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVSiteType(Base):
@@ -327,7 +327,7 @@ class CVSiteType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVStatus(Base):
@@ -341,7 +341,7 @@ class CVStatus(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVTaxonomicClassifierType(Base):
@@ -355,7 +355,7 @@ class CVTaxonomicClassifierType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVUnitsType(Base):
@@ -369,7 +369,7 @@ class CVUnitsType(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVVariableName(Base):
@@ -383,7 +383,7 @@ class CVVariableName(Base):
     SourceVocabularyUri = Column('sourcevocabularyuri', String(255))
 
     def __repr__(self):
-        return "<CV('%s', '%s', '%s', '%s')>" %(self.Term, self.Name, self.Definition, self.Category)
+        return "<CV('%s', '%s', '%s', '%s')>" % (self.Term, self.Name, self.Definition, self.Category)
 
 
 class CVVariableType(Base):
@@ -403,7 +403,7 @@ class CVVariableType(Base):
 def _changeSchema(schema):
     import inspect
     import sys
-    #get a list of all of the classes in the module
+    # get a list of all of the classes in the module
     clsmembers = inspect.getmembers(sys.modules[__name__],
                                     lambda member: inspect.isclass(member) and member.__module__ == __name__)
 
@@ -416,13 +416,14 @@ def _changeSchema(schema):
 def _getSchema(engine):
     from sqlalchemy.engine import reflection
 
-    insp=reflection.Inspector.from_engine(engine)
+    insp = reflection.Inspector.from_engine(engine)
 
     for name in insp.get_schema_names():
-        if 'odm2'== name.lower():
+        if 'odm2' == name.lower():
             return name
     else:
         return insp.default_schema_name
+
 
 def setSchema(engine):
     s = _getSchema(engine)
@@ -480,7 +481,7 @@ vocab = [("actiontype", CVActionType),
          ("samplingfeaturegeotype", CVSamplingFeatureGeoType),
          ("elevationdatum", CVElevationDatum),
          ("resulttype", CVResultType),
-         #("sampledmedium", CVSampledMedium),
+         # ("sampledmedium", CVSampledMedium),
          ("speciation", CVSpeciation),
          ("aggregationstatistic", CVAggregationStatistic),
          ("methodtype", CVMethodType),
@@ -488,16 +489,16 @@ vocab = [("actiontype", CVActionType),
          ("sitetype", CVSiteType),
          ("censorcode", CVCensorCode),
          ("directivetype", CVDirectiveType),
-         ("datasettype",CVDatasetType),
-         ("dataqualitytype",CVDataQualityType),
+         ("datasettype", CVDatasetType),
+         ("dataqualitytype", CVDataQualityType),
          ("organizationtype", CVOrganizationType),
          ("status", CVStatus),
          ("annotationtype", CVAnnotationType),
          ("samplingfeaturetype", CVSamplingFeatureType),
          ("equipmenttype", CVEquipmentType),
-         #("specimenmedium", CVSpecimenMedium),
+         # ("specimenmedium", CVSpecimenMedium),
          ("spatialoffsettype", CVSpatialOffsetType),
-         #("referencematerialmedium", CVReferenceMaterialMedium),
+         # ("referencematerialmedium", CVReferenceMaterialMedium),
          ("specimentype", CVSpecimenType),
          ("variabletype", CVVariableType),
          ("variablename", CVVariableName),
@@ -509,7 +510,7 @@ vocab = [("actiontype", CVActionType),
 
 url = "http://vocabulary.odm2.org/api/v1/%s/?format=skos"
 
-#XML encodings
+# XML encodings
 dc = "{http://purl.org/dc/elements/1.1/}%s"
 rdf = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}%s"
 skos = "{http://www.w3.org/2004/02/skos/core#}%s"
@@ -519,11 +520,11 @@ odm2 = "{http://vocabulary.odm2.org/ODM2/ODM2Terms/}%s"
 # ======================================================================================================================
 # Progress bar
 # ======================================================================================================================
-def update_progress(count, value):
+def update_progress(count_update, value_count):
     sys.stdout.write("\033[K\r")
     sys.stdout.flush()
-    sys.stdout.write("[%-26s] %d%% %s Loaded\r" % 
-                     ('='*count, (count+0.0)/len(vocab)*100, str(value)))
+    sys.stdout.write("[%-26s] %d%% %s Loaded\r" %
+                     ('=' * count_update, (count_update + 0.0) / len(vocab) * 100, str(value_count)))
     sys.stdout.flush()
 
 
@@ -541,14 +542,17 @@ for count, (key, value) in enumerate(vocab):
             try:
                 obj.Term = voc.attrib[rdf % "about"].split('/')[-1]
                 obj.Name = voc.find(skos % "prefLabel").text
-                obj.Definition = voc.find(skos % "definition").text.encode('unicode_escape') if voc.find(skos%"definition") is not None else None
-                obj.Category = category = voc.find(odm2 % "category").text if voc.find(odm2 % "category") is not None else None
+                obj.Definition = voc.find(
+                    skos % "definition").text.encode('unicode_escape') if voc.find(
+                    skos % "definition") is not None else None
+                obj.Category = category = voc.find(
+                    odm2 % "category").text if voc.find(odm2 % "category") is not None else None
                 obj.SourceVocabularyUri = voc.attrib[rdf % "about"]
                 objs.append(obj)
             except Exception as e:
                 session.rollback()
                 if obj.Name is not None:
-                    print("issue loading single object %s: %s " %(obj.Name, e))
+                    print("issue loading single object %s: %s " % (obj.Name, e))
                 pass
         session.add_all(objs)
         if not args.debug:
@@ -564,4 +568,3 @@ for count, (key, value) in enumerate(vocab):
 update_progress(len(vocab), "CV_Terms")
 sys.stdout.write("\nCV Load has completed\r\n")
 sys.stdout.flush()
-
