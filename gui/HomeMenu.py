@@ -30,14 +30,13 @@ import numpy as np
 import pandas as pd
 import ManageDatabases as myDb
 
-from DatabaseCV import importCV
-from DatabaseDeclarative import Base
 from PyQt5.QtGui import QRegExpValidator
 from odm2api.ODMconnection import dbconnection
 from PyQt5.QtCore import pyqtSignal, Qt, QRegExp, pyqtSlot
 from psycopg2.extensions import register_adapter, AsIs
 from PyQt5.QtWidgets import (QComboBox, QHBoxLayout, QPushButton, QVBoxLayout, QWidget, QMessageBox, QTabWidget,
-                             QMainWindow, QDockWidget, QStackedWidget, QLabel, QLineEdit, QFormLayout, QCheckBox, QSizePolicy)
+                             QMainWindow, QDockWidget, QStackedWidget, QLabel, QLineEdit, QFormLayout, QCheckBox,
+                             QSizePolicy)
 
 
 # Main Workspace widget and database/time-series management

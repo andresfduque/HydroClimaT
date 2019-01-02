@@ -1,0 +1,13 @@
+MethodID,MethodType,MethodCode,MethodName,MethodDescription,MethodLink,OrganizationID
+1,instrumentDeployment,PG,Pluviográfica,Estación Pluviográfica,,1
+2,instrumentDeployment,PM,Pluviométrica,Estación Pluviométrica,,1
+3,instrumentDeployment,CO,Climatológica Ordinaria,Estación Climatológica Ordinaria,,1
+4,instrumentDeployment,CP,Climatológica Principal,Estación Climatológica Principal,,1
+5,instrumentDeployment,AM,Agrometeorológica,Estación Agrometeorológica,,1
+6,instrumentDeployment,ME,Meteorológica Especial,Estación Meteorológica Especial,,1
+7,instrumentDeployment,MM,Meteorológica Marina,Estación Meteorológica Marina,,1
+8,instrumentDeployment,SP,Sinópica Principal,Estación Sinópica Principal,,1
+9,instrumentDeployment,SS,Sinópica Secundaria,Estación Sinópica Secundaria,,1
+10,instrumentDeployment,LG,Limnigráfica,Estación Limnigráfica,http://documentacion.ideam.gov.co/openbiblio/bvirtual/021172/Protocoloparaelmonitoreoyseguimientodelagua.pdf,1
+11,instrumentDeployment,LM,Limnimétrica,Estación Limnimétrica,http://documentacion.ideam.gov.co/openbiblio/bvirtual/021172/Protocoloparaelmonitoreoyseguimientodelagua.pdf,1
+12,instrumentDeployment,RS,Radio Sonda,Estación Radio Sonda,,1

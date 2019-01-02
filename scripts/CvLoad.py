@@ -543,7 +543,7 @@ for count, (key, value) in enumerate(vocab):
                 obj.Term = voc.attrib[rdf % "about"].split('/')[-1]
                 obj.Name = voc.find(skos % "prefLabel").text
                 obj.Definition = voc.find(
-                    skos % "definition").text.encode('unicode_escape') if voc.find(
+                    skos % "definition").text if voc.find(
                     skos % "definition") is not None else None
                 obj.Category = category = voc.find(
                     odm2 % "category").text if voc.find(odm2 % "category") is not None else None
