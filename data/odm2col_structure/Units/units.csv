@@ -1,0 +1,4 @@
+UnitsID,UnitsTypeCV,UnitsAbbreviation,UnitsName,UnitsLink
+1,length,mm,millimeter,https://en.wikipedia.org/wiki/Rain
+2,linearVelocity,mm/hr,millimeter per hour,https://en.wikipedia.org/wiki/Rain
+3,volumetricFlowRate,m³/s,cubic meter per second,https://en.wikipedia.org/wiki/Cubic_metre_per_second

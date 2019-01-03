@@ -1,0 +1,40 @@
+VariableID,VariableTypeCV,VariableCode,VariableNameCV,VariableDefinition,NoDataValue
+1,Climate,1,precipitation,Rainfall - Accumulated - 2 minutes,-9999
+2,Climate,2,precipitation,Rainfall - Accumulated - 5 minutes,-9999
+3,Climate,3,precipitation,Rainfall - Accumulated - 10 minutes,-9999
+4,Climate,4,precipitation,Rainfall - Accumulated - 15 minutes,-9999
+5,Climate,5,precipitation,Rainfall - Accumulated - 30 minutes,-9999
+6,Climate,6,precipitation,Rainfall - Accumulated - 1 hour,-9999
+7,Climate,7,precipitation,Rainfall - Accumulated - 2 hours,-9999
+8,Climate,8,precipitation,Rainfall - Accumulated - 3 hours,-9999
+9,Climate,9,precipitation,Rainfall - Accumulated - 4 hours,-9999
+10,Climate,10,precipitation,Rainfall - Accumulated - 6 hours,-9999
+11,Climate,11,precipitation,Rainfall - Accumulated - 12 hours,-9999
+12,Climate,12,precipitation,Rainfall - Accumulated - 24 hours,-9999
+13,Climate,13,precipitation,Rainfall - Accumulated - Monthly,-9999
+14,Climate,14,precipitation,Rainfall - Accumulated - Annual,-9999
+15,Climate,15,precipitation,Rainfall - Rate - 2 minutes,-9999
+16,Climate,16,precipitation,Rainfall - Rate - 5 minutes,-9999
+17,Climate,17,precipitation,Rainfall - Rate - 10 minutes,-9999
+18,Climate,18,precipitation,Rainfall - Rate - 15 minutes,-9999
+19,Climate,19,precipitation,Rainfall - Rate - 30 minutes,-9999
+20,Climate,20,precipitation,Rainfall - Rate - 1 hour,-9999
+21,Climate,21,precipitation,Rainfall - Rate - 2 hours,-9999
+22,Climate,22,precipitation,Rainfall - Rate - 3 hours,-9999
+23,Climate,23,precipitation,Rainfall - Rate - 4 hours,-9999
+24,Climate,24,precipitation,Rainfall - Rate - 6 hours,-9999
+25,Climate,25,precipitation,Rainfall - Rate - 12 hours,-9999
+26,Climate,26,precipitation,Rainfall - Rate - 24 hours,-9999
+27,Climate,27,precipitation,Rainfall - Rate - Monthly,-9999
+28,Climate,28,precipitation,Rainfall - Rate - Annual,-9999
+29,Hydrology,29,streamflow,Streamflow - Mean - Hourly,-9999
+30,Hydrology,30,streamflow,Streamflow - Mean - Daily,-9999
+31,Hydrology,31,streamflow,Streamflow - Mean - Weekly,-9999
+32,Hydrology,32,streamflow,Streamflow - Mean - Monthly,-9999
+33,Hydrology,33,streamflow,Streamflow - Mean - Annual,-9999
+34,Hydrology,34,streamflow,Streamflow - Maximum - Daily,-9999
+35,Hydrology,35,streamflow,Streamflow - Maximum - Monthly,-9999
+36,Hydrology,36,streamflow,Streamflow - Maximum - Annual,-9999
+37,Hydrology,37,streamflow,Streamflow - Minimum - Daily,-9999
+38,Hydrology,38,streamflow,Streamflow - Minimum - Monthly,-9999
+39,Hydrology,39,streamflow,Streamflow - Minimum - Annual,-9999
