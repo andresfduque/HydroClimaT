@@ -1,3 +1,15 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+# Adapted by AndresD at 4/01/19
+
+Features:
+    + Import ODM2 Controlled Vocabularies
+
+@author:    Miguel Leon
+Email:      leonmi@sas.upenn.edu
+"""
+
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -449,7 +461,7 @@ parser.add_argument(
         help="Format: {engine}+{driver}://{user}:{pass}@{address}/{db}\n"
         "mysql+pymysql://ODM:odm@localhost/odm2\n"
         "mssql+pyodbc://ODM:123@localhost/odm2\n"
-        "postgresql+psycopg2://ODM:odm@test.uwrl.usu.edu/odm2\n"
+        "postgresql+psycopg2://postgres:postgres@localhost/odm2col\n"
         "sqlite+pysqlite:///path/to/file",
         default=True, type=str, dest='conn_string')
 parser.add_argument('-d', '--debug', help="Debugging program without committing anything to remote database",

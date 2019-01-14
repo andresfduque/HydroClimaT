@@ -33,7 +33,7 @@ import ManageDatabases as myDb
 from PyQt5.QtGui import QRegExpValidator
 from odm2api.ODMconnection import dbconnection
 from PyQt5.QtCore import pyqtSignal, Qt, QRegExp, pyqtSlot
-from psycopg2.extensions import register_adapter, AsIs
+from psycopg2.extensions import register_adapter
 from PyQt5.QtWidgets import (QComboBox, QHBoxLayout, QPushButton, QVBoxLayout, QWidget, QMessageBox, QTabWidget,
                              QMainWindow, QDockWidget, QStackedWidget, QLabel, QLineEdit, QFormLayout, QCheckBox,
                              QSizePolicy)

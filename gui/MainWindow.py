@@ -21,7 +21,6 @@ import DatabaseEditor
 import pandas as pd
 import pyqtgraph as pg
 import ManageDatabases as myDB
-import SQLAlchemyQueries as sqlQuery
 
 from HomeMenu import HomeWidget, PostgresForm
 
@@ -513,38 +512,38 @@ class HydroClimate(QMainWindow):
 #        self.treeWidget.workspaceTimeSeries.connect(self.getTimeSeries)
 
     # get specific time-series from database
-    @pyqtSlot(object)
-    def getTimeSeries(self, ts_id):
-
-        self.stackedId += 1
-
-        searchParameters = self.timeSeriesDict[int(ts_id)]
-        print(self.timeSeriesDict)
-        timeseries = sqlQuery.timeSeriesQuery(searchParameters, self.engine)
-        dates = timeseries.index
-        timeseriesVector = TableViews.GenericTableView({'Date': dates,
-                                                        'Value': timeseries.values},
-                                                       ['Date', 'Value'], [1, 2])
-
-        self.timeseriesWorkspace = TimeseriesWorkspace()
-        self.timeseriesWorkspace.label.setText('Site: ' + searchParameters[4][0] + ' / Variable: ' +
-                                               searchParameters[1] + ' / Source: ' + searchParameters[0])
-        self.timeseriesVectorWidget = QWidget()
-        self.timeseriesVectorWidget.setLayout(timeseriesVector)
-        self.timeseriesWorkspace.tabWorkspace.addTab(self.timeseriesVectorWidget, 'Timeseries [Vector]')
-
-        self.workspace.stackedWorkspace.addWidget(self.timeseriesWorkspace)
-        self.workspace.stackedWorkspace.setCurrentIndex(self.stackedId)
-        self.timeSeriesDict[int(ts_id)][5] = self.stackedId
-
-        self.timeseriesPlot = pg.PlotWidget()
-#        self.timeseriesPlot
-#        print(dates)
-#        self.timeseriesPlot.plot(dates, timeseries.values)
-        self.timeseriesWorkspace.dockGraphs.setWidget(self.timeseriesPlot)
-
-#        self.dockGraphs.setWidget(self.timeseriesPlot)
-#        timeseries.plot(dates, timeseries.values)
+#     @pyqtSlot(object)
+#     def getTimeSeries(self, ts_id):
+#
+#         self.stackedId += 1
+#
+#         searchParameters = self.timeSeriesDict[int(ts_id)]
+#         print(self.timeSeriesDict)
+#         timeseries = sqlQuery.timeSeriesQuery(searchParameters, self.engine)
+#         dates = timeseries.index
+#         timeseriesVector = TableViews.GenericTableView({'Date': dates,
+#                                                         'Value': timeseries.values},
+#                                                        ['Date', 'Value'], [1, 2])
+#
+#         self.timeseriesWorkspace = TimeseriesWorkspace()
+#         self.timeseriesWorkspace.label.setText('Site: ' + searchParameters[4][0] + ' / Variable: ' +
+#                                                searchParameters[1] + ' / Source: ' + searchParameters[0])
+#         self.timeseriesVectorWidget = QWidget()
+#         self.timeseriesVectorWidget.setLayout(timeseriesVector)
+#         self.timeseriesWorkspace.tabWorkspace.addTab(self.timeseriesVectorWidget, 'Timeseries [Vector]')
+#
+#         self.workspace.stackedWorkspace.addWidget(self.timeseriesWorkspace)
+#         self.workspace.stackedWorkspace.setCurrentIndex(self.stackedId)
+#         self.timeSeriesDict[int(ts_id)][5] = self.stackedId
+#
+#         self.timeseriesPlot = pg.PlotWidget()
+# #        self.timeseriesPlot
+# #        print(dates)
+# #        self.timeseriesPlot.plot(dates, timeseries.values)
+#         self.timeseriesWorkspace.dockGraphs.setWidget(self.timeseriesPlot)
+#
+# #        self.dockGraphs.setWidget(self.timeseriesPlot)
+# #        timeseries.plot(dates, timeseries.values)
 
     @pyqtSlot(object)
     def changeWorkspace(self, ts_id):

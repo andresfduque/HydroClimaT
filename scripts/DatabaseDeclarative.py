@@ -24,6 +24,9 @@ email:      andresfduque@gmail.com
 from sqlalchemy import Column, ForeignKey, Integer, String, Boolean, Text, Float, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
+import warnings
+warnings.warn("the DatabaseDeclarative module is deprecated", DeprecationWarning,
+              stacklevel=2)
 
 # %% Observations Data Model (ODM) implementation in sqlalchemy for Colombia
 # def odm_declarative():

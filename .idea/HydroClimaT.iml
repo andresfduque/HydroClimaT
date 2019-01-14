@@ -9,7 +9,9 @@
       <sourceFolder url="file://$MODULE_DIR$/schemas" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
     </content>
-    <content url="file://$MODULE_DIR$/../ODM2PythonAPI" />
+    <content url="file://$MODULE_DIR$/../ODM2PythonAPI">
+      <sourceFolder url="file://$MODULE_DIR$/../ODM2PythonAPI/odm2api" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$/../../geckodriver-v0.23.0-win64" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

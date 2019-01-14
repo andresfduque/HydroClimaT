@@ -1,40 +1,67 @@
-VariableID,VariableTypeCV,VariableCode,VariableNameCV,VariableDefinition,NoDataValue
-1,Climate,1,precipitation,Rainfall - Accumulated - 2 minutes,-9999
-2,Climate,2,precipitation,Rainfall - Accumulated - 5 minutes,-9999
-3,Climate,3,precipitation,Rainfall - Accumulated - 10 minutes,-9999
-4,Climate,4,precipitation,Rainfall - Accumulated - 15 minutes,-9999
-5,Climate,5,precipitation,Rainfall - Accumulated - 30 minutes,-9999
-6,Climate,6,precipitation,Rainfall - Accumulated - 1 hour,-9999
-7,Climate,7,precipitation,Rainfall - Accumulated - 2 hours,-9999
-8,Climate,8,precipitation,Rainfall - Accumulated - 3 hours,-9999
-9,Climate,9,precipitation,Rainfall - Accumulated - 4 hours,-9999
-10,Climate,10,precipitation,Rainfall - Accumulated - 6 hours,-9999
-11,Climate,11,precipitation,Rainfall - Accumulated - 12 hours,-9999
-12,Climate,12,precipitation,Rainfall - Accumulated - 24 hours,-9999
-13,Climate,13,precipitation,Rainfall - Accumulated - Monthly,-9999
-14,Climate,14,precipitation,Rainfall - Accumulated - Annual,-9999
-15,Climate,15,precipitation,Rainfall - Rate - 2 minutes,-9999
-16,Climate,16,precipitation,Rainfall - Rate - 5 minutes,-9999
-17,Climate,17,precipitation,Rainfall - Rate - 10 minutes,-9999
-18,Climate,18,precipitation,Rainfall - Rate - 15 minutes,-9999
-19,Climate,19,precipitation,Rainfall - Rate - 30 minutes,-9999
-20,Climate,20,precipitation,Rainfall - Rate - 1 hour,-9999
-21,Climate,21,precipitation,Rainfall - Rate - 2 hours,-9999
-22,Climate,22,precipitation,Rainfall - Rate - 3 hours,-9999
-23,Climate,23,precipitation,Rainfall - Rate - 4 hours,-9999
-24,Climate,24,precipitation,Rainfall - Rate - 6 hours,-9999
-25,Climate,25,precipitation,Rainfall - Rate - 12 hours,-9999
-26,Climate,26,precipitation,Rainfall - Rate - 24 hours,-9999
-27,Climate,27,precipitation,Rainfall - Rate - Monthly,-9999
-28,Climate,28,precipitation,Rainfall - Rate - Annual,-9999
-29,Hydrology,29,streamflow,Streamflow - Mean - Hourly,-9999
-30,Hydrology,30,streamflow,Streamflow - Mean - Daily,-9999
-31,Hydrology,31,streamflow,Streamflow - Mean - Weekly,-9999
-32,Hydrology,32,streamflow,Streamflow - Mean - Monthly,-9999
-33,Hydrology,33,streamflow,Streamflow - Mean - Annual,-9999
-34,Hydrology,34,streamflow,Streamflow - Maximum - Daily,-9999
-35,Hydrology,35,streamflow,Streamflow - Maximum - Monthly,-9999
-36,Hydrology,36,streamflow,Streamflow - Maximum - Annual,-9999
-37,Hydrology,37,streamflow,Streamflow - Minimum - Daily,-9999
-38,Hydrology,38,streamflow,Streamflow - Minimum - Monthly,-9999
-39,Hydrology,39,streamflow,Streamflow - Minimum - Annual,-9999
+VariableID,VariableTypeCV,VariableCode,VariableNameCV,VariableDefinition,SpeciationCV,NoDataValue
+1,Climate,Albedo,Albedo,The ratio of reflected to incident light,Not Applicable,-9999
+2,Climate,Altitude,Altitude,Altitude or height,Not Applicable,-9999
+3,Hydrology,Area,Area,Basin area,Not Applicable,-9999
+4,Climate,BarometricPressure,Barometric pressure,Barometric pressure,Not Applicable,-9999
+5,Hydrology,Baseflow,Baseflow,The portion of streamflow (discharge) that is supplied by groundwater sources,Not Applicable,-9999
+6,Climate,CloudCover,Cloud cover,The amount of cloud cover at any given location such as a weather station,Not Applicable,-9999
+7,Ratio,Density,Density,Density,Not Applicable,-9999
+8,Climate,Evaporation,Evaporation,Evaporation,Not Applicable,-9999
+9,Climate,EvapotranspirationReal,Evapotranspiration,Evapotranspiration,Not Applicable,-9999
+10,Climate,EvapotranspirationPotential,"Evapotranspiration, potential",The amount of water that could be evaporated and transpired if there was sufficient water available,Not Applicable,-9999
+11,Hydrology,GageHeight,Gage height,Water level with regard to an arbitrary gage datum,Not Applicable,-9999
+12,Climate,GlobalRadiation,Global Radiation,"Solar radiation, direct and diffuse, received from a solid angle of 2p steradians on a horizontal surface. Source: World Meteorological Organization, Meteoterm",Not Applicable,-9999
+13,Hydrology,GroundwaterDepth,Groundwater Depth,Groundwater depth is the distance between the water surface and the ground surface at a specific location specified by the site location and offset,Not Applicable,-9999
+14,Biota,NDVI,NDVI,Normalized difference vegetation index,Not Applicable,-9999
+15,Climate,Precipitation,Precipitation,Precipitation such as rainfall. Should not be confused with settling.,Not Applicable,-9999
+16,Climate,Pressure_Gauge,"Pressure, gauge",Pressure relative to the local atmospheric or ambient pressure,Not Applicable,-9999
+17,Climate,RainfallRate,Rainfall rate,"A measure of the intensity of rainfall, calculated as the depth of water to fall over a given time period if the intensity were to remain constant over that time interval (in/hr, mm/hr, etc)",Not Applicable,-9999
+18,Climate,RelativeHumidity,Relative humidity,Relative humidity,Not Applicable,-9999
+19,Hydrology,ReservoirStorage,Reservoir storage,Reservoir water volume,Not Applicable,-9999
+20,Hydrology,SedimentSuspended,"Sediment, suspended",Suspended Sediment,Not Applicable,-9999
+21,Ratio,Slope,Slope,Ratio between two variables in a linear relationship.,Not Applicable,-9999
+22,Climate,SnowDepth,Snow depth,Snow depth,Not Applicable,-9999
+23,Climate,SnowWaterEquivalent,Snow water equivalent,"The depth of water if a snow cover is completely melted, expressed in units of depth, on a corresponding horizontal surface area.",Not Applicable,-9999
+24,Water quality,SolidsFixedDissolved,"Solids, fixed dissolved",Fixed Dissolved Solids,Not Applicable,-9999
+25,Water quality,SolidsFixedSuspended,"Solids, fixed suspended",Fixed Suspended Solids,Not Applicable,-9999
+26,Water quality,SolidsTotal,"Solids, total",Total Solids,Not Applicable,-9999
+27,Water quality,SolidsTotalDissolved,"Solids, total dissolved",Total Dissolved Solids,Not Applicable,-9999
+28,Water quality,SolidsTotalFixed,"Solids, total fixed",Total Fixed Solids,Not Applicable,-9999
+29,Water quality,SolidsTotalSuspended,"Solids, total suspended",Total Suspended Solids,Not Applicable,-9999
+30,Water quality,SolidsTotalVolatile,"Solids, total volatile",Total Volatile Solids,Not Applicable,-9999
+31,Water quality,SolidsVolatileDissolved,"Solids, volatile dissolved",Volatile Dissolved Solids,Not Applicable,-9999
+32,Water quality,SolidsVolatileSuspended,"Solids, volatile suspended",Volatile Suspended Solids,Not Applicable,-9999
+33,Hydrology,Streamflow,Streamflow,The volume of water flowing past a fixed point. Equivalent to discharge,Not Applicable,-9999
+34,Climate,Temperature,Temperature,Temperature,Not Applicable,-9999
+35,Climate,TemperatureChange,Temperature change,Temperature change,Not Applicable,-9999
+36,Climate,TemperatureDewPoint,"Temperature, dew point",Dew point temperature,Not Applicable,-9999
+37,Climate,Temperature_Sensor,"Temperature, sensor","Temperature, raw data from sensor",Not Applicable,-9999
+38,Climate,TideStage,Tide stage,Tidal stage,Not Applicable,-9999
+39,Climate,TimeElapsed,"Time, elapsed",Time elapsed since an event occurred,Not Applicable,-9999
+40,Climate,Transpiration,Transpiration,Transpiration,Not Applicable,-9999
+41,Climate,VaporPressure,Vapor pressure,The pressure of a vapor in equilibrium with its non-vapor phases,Not Applicable,-9999
+42,Climate,VaporPressureDeficit,Vapor pressure deficit,The difference between the actual water vapor pressure and the saturation of water vapor pressure at a particular temperature,Not Applicable,-9999
+43,Hydrology,Velocity,Velocity,Water velocity,Not Applicable,-9999
+44,Hydrology,Volume,Volume,Flow hydrograph volume,Not Applicable,-9999
+45,Hydrology,VolumetricWaterContent,Volumetric water content,Volume of liquid water relative to bulk volume. Used for example to quantify soil moisture,Not Applicable,-9999
+46,Hydrology,WaterColumnEquivalentHeightAbsolute,"Water column equivalent height, absolute",The absolute pressure (combined water + barometric) on a sensor expressed as the height of an equivalent column of water,Not Applicable,-9999
+47,Hydrology,WaterColumnEquivalentHeightBarometric,"Water column equivalent height, barometric",Barometric pressure expressed as an equivalent height of water over the sensor,Not Applicable,-9999
+48,Hydrology,WaterDepth,Water depth,Water depth is the distance between the water surface and the bottom of the water body at a specific location specified by the site location and offset,Not Applicable,-9999
+49,Hydrology,WaterFlux,Water flux,Water Flux,Not Applicable,-9999
+50,Hydrology,WaterLevel,Water level,Water level relative to datum. The datum may be local or global such as NGVD 1929 and should be specified in the method description for associated data values,Not Applicable,-9999
+51,Hydrology,WaterPotential,Water potential,"Water potential is the potential energy of water relative to pure free water (e.g. deionized water) in reference conditions. It quantifies the tendency of water to move from one area to another due to osmosis, gravity, mechanical pressure, or matrix effects including surface tension",Not Applicable,-9999
+52,Hydrology,WaterUseAgriculture,"Water Use, Agriculture",Water pumped for Agriculture,Not Applicable,-9999
+53,Hydrology,WaterUseIndustrialCommercialPower,"Water Use, Commercial + Industrial + Power","Water pumped by commercial, industrial users",Not Applicable,-9999
+54,Hydrology,WaterUseDomesticWells,"Water Use, Domestic wells",Water pumped by domestic wells,Not Applicable,-9999
+55,Hydrology,WaterUsePublicSupply,"Water Use, Public Supply",Water supplied by a public utility,Not Applicable,-9999
+56,Hydrology,WaterUseRecreation,"Water Use, Recreation","Recreational water use, for example golf courses",Not Applicable,-9999
+57,Climate,WaterVaporConcentration,Water vapor concentration,Water vapor concentration,Not Applicable,-9999
+58,Climate,WaterVaporDensity,Water vapor density,Water vapor density,Not Applicable,-9999
+59,Climate,WaveHeight,Wave height,"The height of a surface wave, measured as the difference in elevation between the wave crest and an adjacent trough",Not Applicable,-9999
+60,Climate,WeatherConditions,Weather conditions,Weather conditions,Not Applicable,-9999
+61,Climate,WindDirection,Wind direction,Wind direction,Not Applicable,-9999
+62,Climate,WindGustDirection,Wind gust direction,Direction of gusts of wind,Not Applicable,-9999
+63,Climate,WindGustSpeed,Wind gust speed,Speed of gusts of wind,Not Applicable,-9999
+64,Climate,WindRun,Wind Run,The length of flow of air past a point over a time interval. Windspeed times the interval of time,Not Applicable,-9999
+65,Climate,WindSpeed,Wind speed,Wind speed,Not Applicable,-9999
+66,Climate,WindStress,Wind stress,Drag or trangential force per unit area exerted on a surface by the adjacent layer of moving air,Not Applicable,-9999

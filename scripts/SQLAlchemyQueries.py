@@ -18,12 +18,9 @@ email:      andresfduque@gmail.com
 # %% Main imports
 # from odm_sqlalchemy_declarative import DataValues
 from sqlalchemy import and_
-from DatabaseDeclarative import (Base, DataValues, Variables, Units, Sites, Sources, Methods,
-                                 QualityControlLevels, Qualifiers, SiteTypeCV, SpatialReferences,
-                                 VerticalDatumCV, ISOMetadata, TopicCategoryCV, VariableNameCV,
-                                 SpeciationCV, SampleMediumCV, ValueTypeCV, DataTypeCV,
-                                 GeneralCategoryCV, CensorCodeCV)
+from odm2api import models
 from sqlalchemy.orm import sessionmaker
+
 
 
 # %% Start DBSession

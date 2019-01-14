@@ -1,14 +1,14 @@
 SpatialReferenceID,SRSCode,SRSName,SRSDescription,SRSLink
-1,4326,WGS 84,Horizontal component of 3D system. Used by the GPS satellite navigation system and for NATO military geodetic surveying.,http://spatialreference.org/ref/epsg/4326/
-2,3114,MAGNA-SIRGAS / Colombia Far West zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/3114/
-3,3115,MAGNA-SIRGAS / Colombia West zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/3115/
-4,3116,MAGNA-SIRGAS / Colombia Bogota zone,Large and medium scale topographic mapping and engineering survey. Also used for small scale mappig of whole country.,http://spatialreference.org/ref/epsg/3116/
-5,3117,MAGNA-SIRGAS / Colombia East Central zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/3117/
-6,3118,MAGNA-SIRGAS / Colombia East zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/3118/
-7,21896,Bogota 1975 / Colombia West zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/21896/
-8,21897,Bogota 1975 / Colombia Bogota zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/21897/
-9,21898,Bogota 1975 / Colombia East Central zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/21898/
-10,21899,Bogota 1975 / Colombia East Central zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/21899/
-11,32617,WGS 84 / UTM zone 17N,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/32617/
-12,32618,WGS 84 / UTM zone 18N,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/32618/
-13,32619,WGS 84 / UTM zone 19N,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/32619/
+1,EPSG:4326,WGS 84,Horizontal component of 3D system. Used by the GPS satellite navigation system and for NATO military geodetic surveying.,http://spatialreference.org/ref/epsg/4326/
+2,EPSG:3114,MAGNA-SIRGAS / Colombia Far West zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/3114/
+3,EPSG:3115,MAGNA-SIRGAS / Colombia West zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/3115/
+4,EPSG:3116,MAGNA-SIRGAS / Colombia Bogota zone,Large and medium scale topographic mapping and engineering survey. Also used for small scale mappig of whole country.,http://spatialreference.org/ref/epsg/3116/
+5,EPSG:3117,MAGNA-SIRGAS / Colombia East Central zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/3117/
+6,EPSG:3118,MAGNA-SIRGAS / Colombia East zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/3118/
+7,EPSG:21896,Bogota 1975 / Colombia West zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/21896/
+8,EPSG:21897,Bogota 1975 / Colombia Bogota zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/21897/
+9,EPSG:21898,Bogota 1975 / Colombia East Central zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/21898/
+10,EPSG:21899,Bogota 1975 / Colombia East Central zone,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/21899/
+11,EPSG:32617,WGS 84 / UTM zone 17N,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/32617/
+12,EPSG:32618,WGS 84 / UTM zone 18N,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/32618/
+13,EPSG:32619,WGS 84 / UTM zone 19N,Large and medium scale topographic mapping and engineering survey.,http://spatialreference.org/ref/epsg/32619/

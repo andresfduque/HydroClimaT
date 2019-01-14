@@ -1,75 +1,87 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-# Created by AndresD at 22/12/18
+# Created by AndresD at 4/01/19
 
 Features:
-    + Convert IDEAM txt files to csv
+    + Add structure to ODM2 database to fit colombian government agencies data
 
 @author:    Andres Felipe Duque Perez
 Email:      andresfduque@gmail.com
 """
 
-import numpy as np
+import os
+import sys
+import uuid
+import argparse
 import pandas as pd
+from odm2api import models
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+import numpy as np
 from datetime import date
 import os, calendar, pickle, time
 
 
-def split_ideam_line(ideam_line):
-    """
-    Split daily discharge data by columns
+# ======================================================================================================================
+# handles customizing the error messages from ArgParse
+# ======================================================================================================================
+class MyParser(argparse.ArgumentParser):
+        def error(self, message):
+            sys.stderr.write("------------------------------\n")
+            sys.stderr.write('error: %s\n' % message)
+            sys.stderr.write("------------------------------\n")
+            self.print_help()
+            sys.exit(2)
 
-    line: linea con datos en formato de texto IDEAM
-    line_index: índice (python) que indica la posición donde se encuentran \n
-    los valores. Debe ser un VECTOR de longitud 12, y cada campo corresponde \n
-    a una TUPLE de longitud 2.
 
-    Para los archivos de texto IDEAM la posición de los datos para cada mes es:
-        ENE: (18, 26)
-        FEB: (27, 35)
-        MAR: (36, 44)
-        ABR: (45, 53)
-        MAY: (54, 62)
-        JUN: (63, 71)
-        JUL: (72, 80)
-        AGO: (81, 89)
-        SEP: (90, 98)
-        OCT: (99, 107)
-        NOV: (108, 116)
-        DIC: (117, 125)
-    """
-    position_index = [(18, 26), (27, 35), (36, 44), (45, 53), (54, 62), (63, 71), (72, 80), (81, 89), (90, 98),
-                      (99, 107), (108, 116), (117, 125)]
+# handle argument parsing
+info = "A simple script that loads up ODM2COL basic structure into the ODM2 database"
+parser = MyParser(description=info, add_help=True)
+parser.add_argument(
+        help="Format: {engine}+{driver}://{user}:{pass}@{address}/{db}\n"
+        "mysql+pymysql://ODM:odm@localhost/odm2\n"
+        "mssql+pyodbc://ODM:123@localhost/odm2\n"
+        "postgresql+psycopg2://postgres:postgres@localhost/odm2col\n"
+        "sqlite+pysqlite:///path/to/file",
+        default=True, type=str, dest='conn_string')
+parser.add_argument('-d', '--debug', help="Debugging program without committing anything to remote database",
+                    action="store_true")
+args = parser.parse_args()
 
-    # data vector
-    nan_tuple = (np.nan, np.nan)
-    vector = [nan_tuple, nan_tuple, nan_tuple, nan_tuple, nan_tuple, nan_tuple,
-              nan_tuple, nan_tuple, nan_tuple, nan_tuple, nan_tuple, nan_tuple]
 
-    # read each month data [for each day]
-    j = 0
-    for i in position_index:
-        data = np.nan
-        data_quality = np.nan
-        if not ideam_line[i[0]:i[1]] == '':
-            try:
-                data = float(ideam_line[i[0]:i[1]])
-                if str.isnumeric(ideam_line[i[1]:i[1] + 1]):
-                    data_quality = int(ideam_line[i[1]:i[1] + 1])
-                else:
-                    data_quality = np.nan
-            except ValueError:
-                print('error')
-                data = np.nan
-        else:
-            data = np.nan
-            data_quality = np.nan
+# ======================================================================================================================
+# Start database session
+# ======================================================================================================================
+def start_db_session(connection_string):
+    # Bind the engine to the metadata of the Base class so that the declarative can be accessed through a DBSession
+    # instance
+    try:
+        engine = create_engine(connection_string, encoding='unicode_escape')
+        models.setSchema(engine)
+        db_session = sessionmaker(bind=engine)()
+        # A DBSession() instance establishes all conversations with the database and represents a "staging zone" for all
+        # the objects loaded into the database session object. Any change made against the objects in the session won't
+        # be persisted into the database until you call session.commit(). If you're not happy about the changes, you can
+        # revert all of them back to the last commit by calling session.rollback()
+    except Exception as e:
+        print(e)
+        sys.exit(0)
+    return db_session
 
-        vector[j] = (data, data_quality)
-        j += 1
 
-    return vector
+
+
+
+# ======================================================================================================================
+# Script Begin
+# ======================================================================================================================
+conn_string = args.conn_string
+session = start_db_session(conn_string)
+
+print("Loading ODM2COL structure using connection string: %s" % conn_string)
+
+odm2_structure = os.path.dirname(os.getcwd()) + '/data/odm2col_structure/'
 
 
 def ideam_txt_to_csv(source_folder, destiny_folder):
